@@ -7,6 +7,8 @@ title = 'My Blog'
   customCSS = ["css/custom.css"]
   ShowPostNavLinks = true
   ShowCodeCopyButtons = true 
+  ShowToc = true
+  TocOpen = false
   
   [params.profileMode]
     enabled = true
