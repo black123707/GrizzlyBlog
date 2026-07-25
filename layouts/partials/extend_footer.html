@@ -1,0 +1,150 @@
+<!-- ===== 访客计数 ===== -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="site-stats">
+  <span id="busuanzi_container_site_pv">总访问量 <span id="busuanzi_value_site_pv"></span> 次</span>
+  ·
+  <span id="busuanzi_container_site_uv">访客数 <span id="busuanzi_value_site_uv"></span> 人</span>
+</div>
+
+<!-- ===== 最新文章卡片 ===== -->
+<div id="latest-posts" style="display:none;">
+  <h2>最新文章</h2>
+  <div class="post-cards" id="post-cards"></div>
+  <div class="view-all">
+    <a href="/posts">查看全部文章</a>
+  </div>
+</div>
+
+<script>
+(function() {
+  // 只在首页显示最新文章
+  if (window.location.pathname !== '/' && window.location.pathname !== '/index.html') return;
+
+  fetch('/index.xml')
+    .then(r => r.text())
+    .then(xml => {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(xml, 'application/xml');
+      const items = Array.from(doc.querySelectorAll('item')).slice(0, 3);
+      if (items.length === 0) return;
+
+      const container = document.getElementById('post-cards');
+      items.forEach(item => {
+        const title = item.querySelector('title')?.textContent || '无标题';
+        const link = item.querySelector('link')?.textContent || '#';
+        const dateStr = item.querySelector('pubDate')?.textContent || '';
+        const date = dateStr ? new Date(dateStr).toLocaleDateString('zh-CN') : '';
+
+        const card = document.createElement('article');
+        card.className = 'post-card';
+        card.innerHTML = '<a href="' + link + '"><h3>' + title + '</h3><time>' + date + '</time></a>';
+        container.appendChild(card);
+      });
+
+      document.getElementById('latest-posts').style.display = 'block';
+    })
+    .catch(() => {});
+})();
+</script>
+
+<style>
+/* 访客计数 */
+.site-stats {
+  text-align: center;
+  font-size: 0.75rem;
+  color: #999;
+  margin: 30px 0 10px;
+  opacity: 0.7;
+}
+
+/* 最新文章区域 */
+#latest-posts {
+  max-width: 720px;
+  margin: 60px auto 40px;
+  padding: 0 20px;
+}
+
+#latest-posts h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+  text-align: center;
+  color: #1a1a1a;
+}
+
+/* 卡片网格 */
+.post-cards {
+  display: grid;
+  gap: 16px;
+}
+
+.post-card {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 16px;
+  padding: 20px 24px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  border: 1px solid rgba(0,0,0,0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.post-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.1);
+}
+
+.post-card a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.post-card h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  line-height: 1.4;
+}
+
+.post-card time {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+/* 查看全部按钮 */
+.view-all {
+  text-align: center;
+  margin-top: 28px;
+}
+
+.view-all a {
+  display: inline-block;
+  padding: 10px 28px;
+  background: #1a1a1a;
+  color: #fff;
+  border-radius: 24px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.view-all a:hover {
+  background: #333;
+  transform: scale(1.05);
+}
+
+/* 暗色模式适配 */
+.dark .post-card {
+  background: rgba(40, 40, 40, 0.6);
+  border-color: rgba(255,255,255,0.05);
+}
+
+.dark .post-card h3 {
+  color: #e0e0e0;
+}
+
+.dark #latest-posts h2 {
+  color: #e0e0e0;
+}
+</style>
