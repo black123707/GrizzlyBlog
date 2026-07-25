@@ -44,20 +44,6 @@ header nav a[href="/admin/"]:hover {
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // 遍历所有社交图标链接
-  document.querySelectorAll('.social-icons a').forEach(function(link) {
-    if (link.href && link.href.includes('xiaohongshu.com')) {
-      // 清空原有内容（默认链接图标）
-      link.innerHTML = '';
-      // 插入小红书 SVG
-      link.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" style="display:block;"><rect x="2" y="2" width="20" height="20" rx="5" fill="#FF2442"/><path d="M7 7h10v2H7zM7 11h10v2H7zM7 15h7v2H7z" fill="white"/></svg>';
-    }
-  });
-});
-</script>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
   // 尝试多种可能的选择器
   const subtitle = document.querySelector('.profile-subtitle') 
                 || document.querySelector('.profile .subtitle')
