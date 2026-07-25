@@ -22,27 +22,24 @@
   fill: #FF2442 !important;
 }
 
-.write-btn {
-  background: #1a1a1a !important;
-  color: #fff !important;
-  padding: 6px 18px !important;
-  border-radius: 24px !important;
-  font-size: 0.85rem !important;
-  font-weight: 500 !important;
-  letter-spacing: 0.02em;
-  transition: all 0.2s ease !important;
-  margin-left: 4px;
-}
-
-.write-btn:hover {
-  background: #333 !important;
-  transform: translateY(-1px) !important;
-  opacity: 1 !important;
-}
-
 </style>
 
 <script>
+document.querySelectorAll('nav a, header a, #menu a').forEach(function(link) {
+  if (link.textContent.trim() === 'Write') {
+    link.style.cssText = 'background:#1a1a1a !important;color:#fff !important;padding:6px 18px !important;border-radius:24px !important;font-size:0.85rem !important;font-weight:500 !important;letter-spacing:0.02em !important;transition:all 0.2s ease !important;margin-left:4px !important;display:inline-block !important;';
+      
+    link.addEventListener('mouseenter', function() {
+      this.style.background = '#333';
+      this.style.transform = 'translateY(-1px)';
+    });
+    link.addEventListener('mouseleave', function() {
+      this.style.background = '#1a1a1a';
+      this.style.transform = '';
+    });
+  }
+});
+  
 document.addEventListener('DOMContentLoaded', function() {
   // 尝试多种可能的选择器
   const subtitle = document.querySelector('.profile-subtitle') 
