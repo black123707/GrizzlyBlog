@@ -157,6 +157,7 @@
 </style>
 
 <!-- 评论区 -->
+{{ if eq .Section "posts" }}
 <div style="max-width: 720px; margin: 40px auto; padding: 0 20px;">
   <script src="https://giscus.app/client.js"
         data-repo="black123707/GrizzlyBlog"
@@ -174,6 +175,7 @@
         async>
   </script>
 </div>
+{{ end }}
 
 <!-- 返回顶部 -->
 <div id="back-to-top" style="position: fixed; bottom: 28px; right: 28px; width: 42px; height: 42px; background: #1a1a1a; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 9999; box-shadow: 0 4px 14px rgba(0,0,0,0.2); transform: translateY(10px);">
