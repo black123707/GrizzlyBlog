@@ -10,6 +10,17 @@ theme = 'PaperMod'
   ShowPostNavLinks = true
   ShowBreadCrumbs = true
   ShowCodeCopyButtons = true
+  [params.profileMode]
+    enabled = true
+    title = "㌍㌫㌶㌫㌶"
+    subtitle = "Per aspera ad astra."
+    imageUrl = "/images/avatar.jpg"
+    imageWidth = 120
+    imageHeight = 120
+    buttons = [
+      {name = "文章", url = "/posts"},
+      {name = "关于", url = "/about"}
+    ]
 
 [minify]
   disableXML = true
