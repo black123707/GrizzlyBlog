@@ -214,3 +214,28 @@
   transform: scale(1.1) !important;
 }
 </style>
+
+<!-- 图片点击放大 -->
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.8/dist/medium-zoom.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  mediumZoom('.post-content img', {
+    margin: 24,
+    background: 'rgba(0,0,0,0.85)',
+    scrollOffset: 40
+  });
+});
+</script>
+
+<!-- 站点运行时间 -->
+<script>
+(function() {
+  const start = new Date('2024-07-25'); // ← 改成你的建站日期
+  const now = new Date();
+  const days = Math.floor((now - start) / (1000 * 60 * 60 * 24));
+  const el = document.querySelector('.site-stats');
+  if (el) {
+    el.insertAdjacentHTML('beforeend', ' · 已运行 ' + days + ' 天');
+  }
+})();
+</script>
