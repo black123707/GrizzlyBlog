@@ -20,7 +20,7 @@ title = 'My Blog'
     name = "bilibili"
     url = "https://space.bilibili.com/520208446?spm_id_from=333.1007.0.0"
   [[params.socialIcons]]
-    name = "xhslink.com"
+    name = "xiaohongshu.com"
     url = "https://www.xiaohongshu.com/user/profile/5e9e755200000000010017e8"
   customCSS = ["css/custom.css"]
     
