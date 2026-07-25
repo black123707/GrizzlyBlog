@@ -32,6 +32,15 @@ title = 'My Blog'
     name = "关于网站"
     url = "/about"
 
+[params.fuseOpts]
+  isCaseSensitive = false
+  shouldSort = true
+  threshold = 0.4
+  location = 0
+  distance = 1000
+  minMatchCharLength = 2
+  keys = ["title", "summary", "content"]
+
 [minify]
   disableXML = true
 
