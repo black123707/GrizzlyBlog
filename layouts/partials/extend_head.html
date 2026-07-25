@@ -1,7 +1,7 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
 @import url('https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css');
-  
+
 /* 打字机光标 */
 .typewriter-cursor {
   display: inline-block;
@@ -17,10 +17,8 @@
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
 }
-  
-@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
 
-/* 全局应用打字机字体（英文优先，中文回退到系统字体） */
+/* 全局字体：英文打字机 + 中文霞鹜文楷 */
 body, .post-content, .post-title, h1, h2, h3, h4, h5, h6, 
 .entry-header, .profile .title, .profile .subtitle, 
 .post-meta, .pagetitle, .breadcrumbs, nav a, .post-card h3 {
@@ -28,16 +26,17 @@ body, .post-content, .post-title, h1, h2, h3, h4, h5, h6,
   letter-spacing: 0.03em;
 }
 
-/* 代码块保持专业等宽，但换更干净的 Courier Prime */
+/* 代码块等宽字体 */
 pre, code, kbd, samp {
-  font-family: 'Courier Prime', 'Courier New', monospace !important;
+  font-family: 'Courier New', monospace !important;
 }
 
-  /* 暗色模式切换过渡动画 */
+/* 暗色模式过渡动画 */
 body, .post-content, .post-card, .profile, header, nav {
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
-  
+
+/* 社交图标悬停 */
 .social-icons a {
   transition: transform 0.2s ease, opacity 0.2s ease;
   margin: 0 8px;
@@ -63,6 +62,8 @@ body, .post-content, .post-card, .profile, header, nav {
 </style>
 
 <script>
+document.addEventListener('DOMContentLoaded', function() {
+  // ===== 随机座右铭 =====
   const quotes = [
     "Per aspera ad astra.",
     "Stay hungry, stay foolish.",
@@ -72,9 +73,7 @@ body, .post-content, .post-card, .profile, header, nav {
     "Be the change you wish to see.",
     "Simplicity is the ultimate sophistication."
   ];
-  const text = quotes[Math.floor(Math.random() * quotes.length)];
   
-document.addEventListener('DOMContentLoaded', function() {
   // 1. Write 按钮样式
   document.querySelectorAll('nav a, header a, #menu a').forEach(function(link) {
     if (link.textContent.trim() === 'Write') {
@@ -90,20 +89,24 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  // 3. 打字机效果
+  // 2. 打字机效果（带随机名言 + 闪烁光标）
   const subtitle = document.querySelector('.profile-subtitle') 
                 || document.querySelector('.profile .subtitle')
                 || document.querySelector('.home-info .entry-content')
                 || document.querySelector('.profile_inner span:last-of-type');
+  
   if (!subtitle) {
     console.log('Typewriter: 未找到副标题元素');
     return;
   }
-  const text = subtitle.innerText.trim() || "Per aspera ad astra.";
-  if (!text) return;
+  
+  // 随机选一句，覆盖原有文本
+  const text = quotes[Math.floor(Math.random() * quotes.length)];
+  
   subtitle.innerHTML = '';
   subtitle.style.minHeight = '1.5em';
-    let i = 0;
+  
+  let i = 0;
   function type() {
     if (i < text.length) {
       subtitle.innerHTML += text.charAt(i);
@@ -114,9 +117,6 @@ document.addEventListener('DOMContentLoaded', function() {
       const cursor = document.createElement('span');
       cursor.className = 'typewriter-cursor';
       subtitle.appendChild(cursor);
-    }
-  }
-  type();
     }
   }
   type();
