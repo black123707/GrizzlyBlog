@@ -1,4 +1,20 @@
 <style>
+/* 打字机光标 */
+.typewriter-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  background: currentColor;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+  
 @import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
 
 /* 全局应用打字机字体（英文优先，中文回退到系统字体） */
@@ -44,6 +60,17 @@ body, .post-content, .post-card, .profile, header, nav {
 </style>
 
 <script>
+  const quotes = [
+    "Per aspera ad astra.",
+    "Stay hungry, stay foolish.",
+    "Less is more.",
+    "Think different.",
+    "Done is better than perfect.",
+    "Be the change you wish to see.",
+    "Simplicity is the ultimate sophistication."
+  ];
+  const text = quotes[Math.floor(Math.random() * quotes.length)];
+  
 document.addEventListener('DOMContentLoaded', function() {
   // 1. Write 按钮样式
   document.querySelectorAll('nav a, header a, #menu a').forEach(function(link) {
@@ -73,12 +100,20 @@ document.addEventListener('DOMContentLoaded', function() {
   if (!text) return;
   subtitle.innerHTML = '';
   subtitle.style.minHeight = '1.5em';
-  let i = 0;
+    let i = 0;
   function type() {
     if (i < text.length) {
       subtitle.innerHTML += text.charAt(i);
       i++;
       setTimeout(type, 100);
+    } else {
+      // 打字结束后插入闪烁光标
+      const cursor = document.createElement('span');
+      cursor.className = 'typewriter-cursor';
+      subtitle.appendChild(cursor);
+    }
+  }
+  type();
     }
   }
   type();
