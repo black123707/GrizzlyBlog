@@ -40,56 +40,19 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  // 2. 移动搜索图标（兼容原生按钮和菜单项两种情况）
-  let searchBtn = document.querySelector('.search-button') 
-               || document.querySelector('.search-toggle')
-               || document.querySelector('button[title*="Search" i]')
-               || document.querySelector('button[aria-label*="Search" i]')
-               || document.querySelector('a[href="/search/"]');
-               
-  const menu = document.querySelector('#menu');
-  const nav = menu?.closest('nav') || menu?.closest('.nav') || document.querySelector('header nav');
-
-  if (searchBtn && menu && nav) {
-    // 如果搜索按钮在菜单内部（是菜单项），先提取出来
-    if (menu.contains(searchBtn)) {
-      const searchLi = searchBtn.closest('li');
-      if (searchLi) {
-        const wrapper = document.createElement('span');
-        wrapper.style.display = 'inline-flex';
-        wrapper.style.alignItems = 'center';
-        wrapper.appendChild(searchBtn);
-        nav.insertBefore(wrapper, menu);
-        searchLi.remove();
-      } else {
-        nav.insertBefore(searchBtn, menu);
-      }
-    } else {
-      nav.insertBefore(searchBtn, menu);
-    }
-    
-    searchBtn.style.marginLeft = '10px';
-    searchBtn.style.display = 'inline-flex';
-    searchBtn.style.alignItems = 'center';
-  }
-
-  // 4. 打字机效果
+  // 3. 打字机效果
   const subtitle = document.querySelector('.profile-subtitle') 
                 || document.querySelector('.profile .subtitle')
                 || document.querySelector('.home-info .entry-content')
                 || document.querySelector('.profile_inner span:last-of-type');
-  
   if (!subtitle) {
     console.log('Typewriter: 未找到副标题元素');
     return;
   }
-  
   const text = subtitle.innerText.trim() || "Per aspera ad astra.";
   if (!text) return;
-  
   subtitle.innerHTML = '';
   subtitle.style.minHeight = '1.5em';
-  
   let i = 0;
   function type() {
     if (i < text.length) {
