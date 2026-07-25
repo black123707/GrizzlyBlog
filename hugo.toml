@@ -21,6 +21,13 @@ theme = 'PaperMod'
       {name = "文章", url = "/posts"},
       {name = "关于", url = "/about"}
     ]
+  [params.socialIcons]
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/black123707"
+  [[params.socialIcons]]
+    name = "bilibili"
+    url = "https://space.bilibili.com/520208446?spm_id_from=333.1007.0.0"
 
 [minify]
   disableXML = true
