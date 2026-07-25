@@ -1,4 +1,4 @@
-baseURL = 'https://grizzly-blog.netlify.app/'
+baseURL = 'baseURL = 'https://grizzlyblog.pages.dev/''
 languageCode = 'en-us'
 title = 'My Blog'
 theme = 'PaperMod'
