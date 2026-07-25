@@ -21,32 +21,6 @@
 .social-icons a[href*="xiaohongshu.com"]:hover svg {
   fill: #FF2442 !important;
 }
-
-</style>
-
-<style>
-.social-icons a {
-  transition: transform 0.2s ease, opacity 0.2s ease;
-  margin: 0 8px;
-  display: inline-block;
-}
-
-.social-icons a:hover {
-  transform: translateY(-3px) scale(1.15);
-  opacity: 0.85;
-}
-
-.social-icons a[href*="github.com"]:hover svg {
-  fill: #24292f !important;
-}
-
-.social-icons a[href*="bilibili.com"]:hover svg {
-  fill: #FB7299 !important;
-}
-
-.social-icons a[href*="xiaohongshu.com"]:hover svg {
-  fill: #FF2442 !important;
-}
 </style>
 
 <script>
@@ -55,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('nav a, header a, #menu a').forEach(function(link) {
     if (link.textContent.trim() === 'Write') {
       link.style.cssText = 'background:#1a1a1a !important;color:#fff !important;padding:3px 14px !important;border-radius:20px !important;font-size:0.8rem !important;font-weight:500 !important;letter-spacing:0.02em !important;transition:all 0.2s ease !important;margin-left:4px !important;display:inline-block !important;line-height:1.4 !important;';
-      
       link.addEventListener('mouseenter', function() {
         this.style.background = '#333';
         this.style.transform = 'translateY(-1px)';
@@ -67,20 +40,47 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-    // 2.移动搜索图标到 My Blog 和日间模式旁边
-  const nav = document.querySelector('header nav') || document.querySelector('.nav');
-  const searchBtn = document.querySelector('.search-button');
+  // 2. 移动搜索图标（兼容原生按钮和菜单项两种情况）
+  let searchBtn = document.querySelector('.search-button') 
+               || document.querySelector('.search-toggle')
+               || document.querySelector('button[title*="Search" i]')
+               || document.querySelector('button[aria-label*="Search" i]')
+               || document.querySelector('a[href="/search/"]');
+               
   const menu = document.querySelector('#menu');
-  
-  if (nav && searchBtn && menu) {
-    nav.insertBefore(searchBtn, menu);
-    // 微调间距
+  const nav = menu?.closest('nav') || menu?.closest('.nav') || document.querySelector('header nav');
+
+  if (searchBtn && menu && nav) {
+    // 如果搜索按钮在菜单内部（是菜单项），先提取出来
+    if (menu.contains(searchBtn)) {
+      const searchLi = searchBtn.closest('li');
+      if (searchLi) {
+        const wrapper = document.createElement('span');
+        wrapper.style.display = 'inline-flex';
+        wrapper.style.alignItems = 'center';
+        wrapper.appendChild(searchBtn);
+        nav.insertBefore(wrapper, menu);
+        searchLi.remove();
+      } else {
+        nav.insertBefore(searchBtn, menu);
+      }
+    } else {
+      nav.insertBefore(searchBtn, menu);
+    }
+    
     searchBtn.style.marginLeft = '10px';
     searchBtn.style.display = 'inline-flex';
     searchBtn.style.alignItems = 'center';
   }
 
-  // 3. 打字机效果
+  // 3. 替换小红书图标
+  document.querySelectorAll('.social-icons a').forEach(function(link) {
+    if (link.href && link.href.includes('xiaohongshu.com')) {
+      link.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" style="display:block;"><rect x="2" y="2" width="20" height="20" rx="5" fill="#FF2442"/><path d="M7 7h10v2H7zM7 11h10v2H7zM7 15h7v2H7z" fill="white"/></svg>';
+    }
+  });
+
+  // 4. 打字机效果
   const subtitle = document.querySelector('.profile-subtitle') 
                 || document.querySelector('.profile .subtitle')
                 || document.querySelector('.home-info .entry-content')
@@ -107,8 +107,4 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   type();
 });
-</script>
-
-
-  
 </script>
