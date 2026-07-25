@@ -25,7 +25,14 @@
     .then(xml => {
       const parser = new DOMParser();
       const doc = parser.parseFromString(xml, 'application/xml');
-      const items = Array.from(doc.querySelectorAll('item')).slice(0, 3);
+      const items = Array.from(doc.querySelectorAll('item'))
+        .filter(item => {
+          const link = item.querySelector('link')?.textContent || '';
+          const title = item.querySelector('title')?.textContent || '';
+          // 排除 About 页面和其他非文章页面
+          return !link.includes('/about') && title.toLowerCase() !== 'about';
+        })
+        .slice(0, 3);
       if (items.length === 0) return;
 
       const container = document.getElementById('post-cards');
