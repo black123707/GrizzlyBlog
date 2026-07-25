@@ -21,7 +21,7 @@ theme = 'PaperMod'
       {name = "文章", url = "/posts"},
       {name = "关于", url = "/about"}
     ]
-  [params.socialIcons]
+  [[params.socialIcons]]
   [[params.socialIcons]]
     name = "github"
     url = "https://github.com/black123707"
