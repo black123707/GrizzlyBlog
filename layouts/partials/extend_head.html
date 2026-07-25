@@ -1,12 +1,20 @@
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 <script>
-  if (window.netlifyIdentity) {
-    window.netlifyIdentity.on("init", user => {
-      if (!user) {
-        window.netlifyIdentity.on("login", () => {
-          document.location.href = "/admin/";
-        });
-      }
-    });
+document.addEventListener('DOMContentLoaded', function() {
+  const subtitle = document.querySelector('.profile .profile-subtitle');
+  if (!subtitle) return;
+  
+  const text = subtitle.innerText || "Per aspera ad astra.";
+  subtitle.innerHTML = '';
+  subtitle.style.minHeight = subtitle.offsetHeight + 'px';
+  
+  let i = 0;
+  function type() {
+    if (i < text.length) {
+      subtitle.innerHTML += text.charAt(i);
+      i++;
+      setTimeout(type, 100);
+    }
   }
+  type();
+});
 </script>
