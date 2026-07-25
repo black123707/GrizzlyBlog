@@ -1,3 +1,31 @@
+<style>
+/* ===== 社交图标悬停效果 ===== */
+.social-icons a {
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  margin: 0 8px;
+  display: inline-block;
+}
+
+.social-icons a:hover {
+  transform: translateY(-3px) scale(1.15);
+  opacity: 0.85;
+}
+
+/* GitHub 悬停变黑 */
+.social-icons a[href*="github.com"]:hover svg {
+  fill: #24292f !important;
+}
+
+/* Bilibili 悬停变粉 */
+.social-icons a[href*="bilibili.com"]:hover svg {
+  fill: #FB7299 !important;
+}
+
+/* 小红书（如果用占位符的话）悬停变红 */
+.social-icons a[href*="xiaohongshu.com"]:hover svg {
+  fill: #FF2442 !important;
+}
+</style>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   // 尝试多种可能的选择器
