@@ -67,7 +67,20 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  // 2. 打字机效果
+    // 2.移动搜索图标到 My Blog 和日间模式旁边
+  const nav = document.querySelector('header nav') || document.querySelector('.nav');
+  const searchBtn = document.querySelector('.search-button');
+  const menu = document.querySelector('#menu');
+  
+  if (nav && searchBtn && menu) {
+    nav.insertBefore(searchBtn, menu);
+    // 微调间距
+    searchBtn.style.marginLeft = '10px';
+    searchBtn.style.display = 'inline-flex';
+    searchBtn.style.alignItems = 'center';
+  }
+
+  // 3. 打字机效果
   const subtitle = document.querySelector('.profile-subtitle') 
                 || document.querySelector('.profile .subtitle')
                 || document.querySelector('.home-info .entry-content')
