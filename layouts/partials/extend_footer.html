@@ -156,7 +156,7 @@
 }
 </style>
 
-{{ if findRE "^/posts/" .RelPermalink }}
+{{ if and (findRE "^/posts/" .RelPermalink) (ne .Kind "section") }}
 <!-- 评论区 -->
 <div style="max-width: 720px; margin: 40px auto; padding: 0 20px;">
   <script src="https://giscus.app/client.js"
@@ -230,7 +230,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <!-- 站点运行时间 -->
 <script>
 (function() {
-  const start = new Date('2024-07-25'); // ← 改成你的建站日期
+  const start = new Date('2026-07-25'); // ← 改成你的建站日期
   const now = new Date();
   const days = Math.floor((now - start) / (1000 * 60 * 60 * 24));
   const el = document.querySelector('.site-stats');
