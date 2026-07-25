@@ -73,6 +73,12 @@ title = 'My Blog'
   [menu.main.params]
     class = "write-btn"
 
+[[menu.main]]
+  identifier = "search"
+  name = "🔍"
+  url = "/search/"
+  weight = 25
+
 
 
 
