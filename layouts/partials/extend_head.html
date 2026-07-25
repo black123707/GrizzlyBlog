@@ -1,11 +1,21 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  const subtitle = document.querySelector('.profile .profile-subtitle');
-  if (!subtitle) return;
+  // 尝试多种可能的选择器
+  const subtitle = document.querySelector('.profile-subtitle') 
+                || document.querySelector('.profile .subtitle')
+                || document.querySelector('.home-info .entry-content')
+                || document.querySelector('.profile_inner span:last-of-type');
   
-  const text = subtitle.innerText || "Per aspera ad astra.";
+  if (!subtitle) {
+    console.log('Typewriter: 未找到副标题元素');
+    return;
+  }
+  
+  const text = subtitle.innerText.trim() || "Per aspera ad astra.";
+  if (!text) return;
+  
   subtitle.innerHTML = '';
-  subtitle.style.minHeight = subtitle.offsetHeight + 'px';
+  subtitle.style.minHeight = '1.5em';
   
   let i = 0;
   function type() {
