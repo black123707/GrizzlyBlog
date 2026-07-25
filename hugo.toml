@@ -11,6 +11,7 @@ title = 'My Blog'
   TocOpen = false
   ShowReadingTime = true
   ShowWordCount = true
+  ShowLastMod = true
   
   [params.profileMode]
     enabled = true
