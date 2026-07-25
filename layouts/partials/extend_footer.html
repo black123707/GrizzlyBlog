@@ -17,7 +17,6 @@
 
 <script>
 (function() {
-  // 只在首页显示最新文章
   if (window.location.pathname !== '/' && window.location.pathname !== '/index.html') return;
 
   fetch('/index.xml')
@@ -29,11 +28,12 @@
         .filter(item => {
           const link = item.querySelector('link')?.textContent || '';
           const title = item.querySelector('title')?.textContent || '';
-          // 排除 About 页面和其他非文章页面
           return !link.includes('/about') && title.toLowerCase() !== 'about';
         })
         .slice(0, 3);
+      
       if (items.length === 0) return;
+      // ... 后面不变
 
       const container = document.getElementById('post-cards');
       items.forEach(item => {
