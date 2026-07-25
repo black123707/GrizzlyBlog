@@ -67,6 +67,11 @@ body, .post-content, .post-card, .profile, header, nav {
 </style>
 
 <script>
+// 注册 Service Worker
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js').catch(() => {});
+}
+  
 // 外部链接新标签页打开
 document.querySelectorAll('.post-content a, article a').forEach(function(link) {
   if (link.hostname && link.hostname !== window.location.hostname) {
