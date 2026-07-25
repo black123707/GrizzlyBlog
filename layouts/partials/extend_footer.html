@@ -156,7 +156,7 @@
 }
 </style>
 
-{{ if eq .Section "posts" }}
+{{ if findRE "^/posts/" .RelPermalink }}
 <!-- 评论区 -->
 <div style="max-width: 720px; margin: 40px auto; padding: 0 20px;">
   <script src="https://giscus.app/client.js"
