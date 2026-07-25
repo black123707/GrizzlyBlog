@@ -5,6 +5,8 @@ title = 'My Blog'
 
 [params]
   customCSS = ["css/custom.css"]
+  ShowPostNavLinks = true
+  ShowCodeCopyButtons = true
   
   [params.profileMode]
     enabled = true
@@ -21,8 +23,6 @@ title = 'My Blog'
     ShowCodeCopyButtons = true
     # 搜索相关
     searchHidden = true
-    ShowPostNavLinks = true
-    ShowCodeCopyButtons = true
     
   [[params.socialIcons]]
     name = "github"
