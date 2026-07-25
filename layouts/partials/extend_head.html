@@ -1,10 +1,19 @@
 <style>
-@import url('https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css');
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
 
-body, .post-content, .post-title {
-  font-family: 'LXGW WenKai', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+/* 全局应用打字机字体（英文优先，中文回退到系统字体） */
+body, .post-content, .post-title, h1, h2, h3, h4, h5, h6, 
+.entry-header, .profile .title, .profile .subtitle, 
+.post-meta, .pagetitle, .breadcrumbs, nav a, .post-card h3 {
+  font-family: 'Special Elite', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  letter-spacing: 0.03em;  /* 打字机字体稍微拉开字距更好看 */
 }
-  
+
+/* 代码块保持专业等宽，但换更干净的 Courier Prime */
+pre, code, kbd, samp {
+  font-family: 'Courier Prime', 'Courier New', monospace !important;
+}
+
   /* 暗色模式切换过渡动画 */
 body, .post-content, .post-card, .profile, header, nav {
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
