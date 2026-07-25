@@ -3,6 +3,15 @@ theme = 'PaperMod'
 languageCode = 'zh-CN'
 title = 'My Blog'
 
+[params.fuseOpts]
+  isCaseSensitive = false
+  shouldSort = true
+  threshold = 0.4
+  location = 0
+  distance = 1000
+  minMatchCharLength = 2
+  keys = ["title", "summary", "content"]
+  
 [params]
   customCSS = ["css/custom.css"]
   
@@ -32,14 +41,14 @@ title = 'My Blog'
     name = "关于网站"
     url = "/about"
 
-[params.fuseOpts]
-  isCaseSensitive = false
-  shouldSort = true
-  threshold = 0.4
-  location = 0
-  distance = 1000
-  minMatchCharLength = 2
-  keys = ["title", "summary", "content"]
+[params]
+  # 你现有的其他配置...
+  ShowReadingTime = true
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  # 搜索相关
+  searchHidden = false
 
 [minify]
   disableXML = true
