@@ -20,7 +20,7 @@ title = 'My Blog'
     ShowBreadCrumbs = true
     ShowCodeCopyButtons = true
     # 搜索相关
-    searchHidden = false
+    searchHidden = true
     
   [[params.socialIcons]]
     name = "github"
@@ -52,6 +52,12 @@ title = 'My Blog'
   disableXML = true
 
 [[menu.main]]
+  identifier = "search"
+  name = "🔍"
+  url = "/search/"
+  weight = 5
+
+[[menu.main]]
   identifier = "posts"
   name = "Posts"
   url = "/posts/"
@@ -67,7 +73,7 @@ title = 'My Blog'
   identifier = "write"
   name = "Write"
   url = "/admin/"
-  weight = 30
+  weight = 25
   [menu.main.params]
     class = "write-btn"
 
