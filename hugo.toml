@@ -9,6 +9,8 @@ title = 'My Blog'
   ShowCodeCopyButtons = true 
   ShowToc = true
   TocOpen = false
+  ShowReadingTime = true
+  ShowWordCount = true
   
   [params.profileMode]
     enabled = true
