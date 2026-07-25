@@ -20,10 +20,10 @@ title = 'My Blog'
     name = "bilibili"
     url = "https://space.bilibili.com/520208446?spm_id_from=333.1007.0.0"
   [[params.profileMode.buttons]]
-      name = "文章"
+      name = "我的Blog"
       url = "/posts" 
   [[params.profileMode.buttons]]
-      name = "关于"
+      name = "关于网站"
       url = "/about"
 
 [minify]
