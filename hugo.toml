@@ -1,7 +1,12 @@
-baseURL = 'https://grizzlyblog.pages.dev'
-languageCode = 'en-us'
-title = 'My Blog'
-theme = 'PaperMod'
+baseURL = 'https://grizzlyblog.pages.dev/'
+languageCode = 'zh-CN'
+defaultContentLanguage = 'zh'
+theme = 'blowfish'
+title = 'Grizzly's Blog'
+
+[author]
+  name = "Grizzly"
+  image = "img/avatar.png"
 
 [params]
   defaultTheme = "auto"
