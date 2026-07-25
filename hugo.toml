@@ -46,3 +46,9 @@ title = 'My Blog'
   name = "About"
   url = "/about/"
   weight = 20
+
+[[menu.main]]
+  identifier = "write"
+  name = "Write"
+  url = "/admin/"
+  weight = 30
