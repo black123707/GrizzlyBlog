@@ -62,6 +62,14 @@ body, .post-content, .post-card, .profile, header, nav {
 </style>
 
 <script>
+// 外部链接新标签页打开
+document.querySelectorAll('.post-content a, article a').forEach(function(link) {
+  if (link.hostname && link.hostname !== window.location.hostname) {
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+  }
+});
+  
 document.addEventListener('DOMContentLoaded', function() {
   // ===== 随机座右铭 =====
   const quotes = [
