@@ -6,9 +6,7 @@ title = 'My Blog'
 [params]
   customCSS = ["css/custom.css"]
   ShowPostNavLinks = true
-  ShowCodeCopyButtons = true
-  ShowToc = true
-  TocOpen = false 
+  ShowCodeCopyButtons = true 
   
   [params.profileMode]
     enabled = true
@@ -80,12 +78,6 @@ title = 'My Blog'
   weight = 25
   [menu.main.params]
     class = "write-btn"
-
-[[menu.main]]
-  identifier = "tags"
-  name = "Tags"
-  url = "/tags/"
-  weight = 18
 
 
 
