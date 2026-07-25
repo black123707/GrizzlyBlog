@@ -1,31 +1,15 @@
 baseURL = 'https://grizzlyblog.pages.dev/'
+theme = 'PaperMod'
 languageCode = 'zh-CN'
-defaultContentLanguage = 'zh'
-theme = 'blowfish'
-title = 'Grizzly-Blog'
-
-[author]
-  name = "Grizzly"
-  image = "img/avatar.png"
+title = 'My Blog'
 
 [params]
-  defaultTheme = "auto"
-  ShowReadingTime = true
-  ShowShareButtons = true
-  ShowPostNavLinks = true
-  ShowBreadCrumbs = true
-  ShowCodeCopyButtons = true
   [params.profileMode]
     enabled = true
     title = "㌍㌫㌶㌫㌶"
     subtitle = "Per aspera ad astra."
-    imageUrl = "/images/avatar.jpg"
-    imageWidth = 120
-    imageHeight = 120
-    buttons = [
-      {name = "文章", url = "/posts"},
-      {name = "关于", url = "/about"}
-    ]
+    imageUrl = "/images/avatar.png"   # 本地路径，对应 static/images/avatar.png
+    imageTitle = "头像"
   [[params.socialIcons]]
     name = "github"
     url = "https://github.com/black123707"
