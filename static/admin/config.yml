@@ -1,0 +1,20 @@
+backend:
+  name: github
+  repo: black123707/GrizzlyBlog    # 例如：grizzlyblog/my-hugo-blog
+  branch: main
+  base_url: https://grizzlyblog.pages.dev/
+  auth_endpoint: auth
+
+media_folder: "static/images"
+public_folder: "/images"
+
+collections:
+  - name: "posts"
+    label: "文章"
+    folder: "content/posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "标题", name: "title", widget: "string"}
+      - {label: "发布日期", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: "HH:mm"}
+      - {label: "正文", name: "body", widget: "markdown"}
