@@ -1,20 +1,5 @@
-/* ========== 社交图标悬停 ========== */
-.social-icons a {
-  transition: transform 0.2s ease, opacity 0.2s ease;
-  margin: 0 8px;
-}
-
-.social-icons a:hover {
-  transform: translateY(-3px) scale(1.15);
-  opacity: 0.85;
-}
-
-.social-icons svg {
-  width: 24px;
-  height: 24px;
-}
-
-/* ========== 小红书图标替换 ========== */
+<style>
+/* ===== 小红书图标替换 ===== */
 .social-icons a[href*="xiaohongshu.com"] svg,
 .social-icons a[href*="xhslink.com"] svg {
   display: none !important;
@@ -26,11 +11,11 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 26px;
-  height: 26px;
+  width: 24px;
+  height: 24px;
 }
 
-/* 插入小红书 SVG 图标（红色笔记） */
+/* 插入小红书红色笔记图标 */
 .social-icons a[href*="xiaohongshu.com"]::before,
 .social-icons a[href*="xhslink.com"]::before {
   content: "";
@@ -43,35 +28,4 @@
   background-position: center;
   transition: transform 0.2s ease;
 }
-
-/* ===== 通用悬停（所有社交图标）===== */
-.social-icons a {
-  transition: transform 0.2s ease, opacity 0.2s ease;
-  margin: 0 8px;
-}
-
-.social-icons a:hover {
-  transform: translateY(-3px) scale(1.15);
-  opacity: 0.85;
-}
-
-/* ===== GitHub 悬停变黑色 ===== */
-.social-icons a[href*="github.com"]:hover svg {
-  fill: #24292f !important;
-}
-
-/* ===== Bilibili 悬停变粉色 ===== */
-.social-icons a[href*="bilibili.com"]:hover svg,
-.social-icons a[href*="space.bilibili.com"]:hover svg {
-  fill: #FB7299 !important;
-}
-
-/* ===== 小红书悬停变红色（如果你也加了）===== */
-.social-icons a[href*="xiaohongshu.com"]:hover::before,
-.social-icons a[href*="xhslink.com"]:hover::before {
-  filter: brightness(1.2);
-  transform: scale(1.2) translateY(-2px);
-}
-.social-icons a[href*="xhslink.com"]:hover::before {
-  transform: scale(1.2) translateY(-2px);
-}
+</style>
