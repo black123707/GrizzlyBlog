@@ -2,7 +2,7 @@ baseURL = 'https://grizzlyblog.pages.dev/'
 languageCode = 'zh-CN'
 defaultContentLanguage = 'zh'
 theme = 'blowfish'
-title = 'Grizzly's Blog'
+title = 'Grizzly-Blog'
 
 [author]
   name = "Grizzly"
