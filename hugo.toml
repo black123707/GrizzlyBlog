@@ -8,10 +8,11 @@ title = 'My Blog'
     enabled = true
     title = "㌍㌫㌶㌫㌶"
     subtitle = "Per aspera ad astra."
-    imageUrl = "/images/avatar.jpg"   # 本地路径，对应 static/images/avatar.png
+    imageUrl = "/images/avatar.jpg"
     imageTitle = "头像"
-    imageWidth = 150                  # 可选：宽度
-    imageHeight = 150  
+    imageWidth = 150
+    imageHeight = 150
+    
   [[params.socialIcons]]
     name = "github"
     url = "https://github.com/black123707"
