@@ -1,0 +1,51 @@
+/* ========== 社交图标悬停 ========== */
+.social-icons a {
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  margin: 0 8px;
+}
+
+.social-icons a:hover {
+  transform: translateY(-3px) scale(1.15);
+  opacity: 0.85;
+}
+
+.social-icons svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* ========== 小红书图标替换 ========== */
+.social-icons a[href*="xiaohongshu.com"] svg,
+.social-icons a[href*="xhslink.com"] svg {
+  display: none !important;
+}
+
+.social-icons a[href*="xiaohongshu.com"],
+.social-icons a[href*="xhslink.com"] {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+}
+
+/* 插入小红书 SVG 图标（红色笔记） */
+.social-icons a[href*="xiaohongshu.com"]::before,
+.social-icons a[href*="xhslink.com"]::before {
+  content: "";
+  display: block;
+  width: 22px;
+  height: 22px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='2' y='2' width='20' height='20' rx='5' fill='%23FF2442'/%3E%3Cpath d='M7 7h10v2H7zM7 11h10v2H7zM7 15h7v2H7z' fill='white'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: transform 0.2s ease;
+}
+
+/* 小红书悬停效果 */
+.social-icons a[href*="xiaohongshu.com"]:hover::before,
+.social-icons a[href*="xhslink.com"]:hover::before {
+  transform: scale(1.2) translateY(-2px);
+}
