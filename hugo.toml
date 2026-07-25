@@ -3,15 +3,6 @@ theme = 'PaperMod'
 languageCode = 'zh-CN'
 title = 'My Blog'
 
-[params.fuseOpts]
-  isCaseSensitive = false
-  shouldSort = true
-  threshold = 0.4
-  location = 0
-  distance = 1000
-  minMatchCharLength = 2
-  keys = ["title", "summary", "content"]
-  
 [params]
   customCSS = ["css/custom.css"]
   
@@ -23,6 +14,13 @@ title = 'My Blog'
     imageTitle = "头像"
     imageWidth = 150
     imageHeight = 150
+    # 你现有的其他配置...
+    ShowReadingTime = true
+    ShowPostNavLinks = true
+    ShowBreadCrumbs = true
+    ShowCodeCopyButtons = true
+    # 搜索相关
+    searchHidden = false
     
   [[params.socialIcons]]
     name = "github"
@@ -41,14 +39,14 @@ title = 'My Blog'
     name = "关于网站"
     url = "/about"
 
-[params]
-  # 你现有的其他配置...
-  ShowReadingTime = true
-  ShowPostNavLinks = true
-  ShowBreadCrumbs = true
-  ShowCodeCopyButtons = true
-  # 搜索相关
-  searchHidden = false
+[params.fuseOpts]
+  isCaseSensitive = false
+  shouldSort = true
+  threshold = 0.4
+  location = 0
+  distance = 1000
+  minMatchCharLength = 2
+  keys = ["title", "summary", "content"]
 
 [minify]
   disableXML = true
