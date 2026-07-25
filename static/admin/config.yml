@@ -18,3 +18,15 @@ collections:
       - {label: "标题", name: "title", widget: "string"}
       - {label: "发布日期", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: "HH:mm"}
       - {label: "正文", name: "body", widget: "markdown"}
+      
+  # 新增：页面配置（About 等）
+  - name: "pages"
+    label: "页面"
+    files:
+      - file: "content/about.md"
+        label: "关于网站"
+        name: "about"
+        fields:
+          - {label: "标题", name: "title", widget: "string"}
+          - {label: "正文", name: "body", widget: "markdown"}
+          - {label: "菜单权重", name: "weight", widget: "number", required: false}
