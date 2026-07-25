@@ -52,3 +52,13 @@ title = 'My Blog'
   name = "Write"
   url = "/admin/"
   weight = 30
+  [menu.main.params]
+    class = "write-btn"
+
+
+
+
+
+
+
+
