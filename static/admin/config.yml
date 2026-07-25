@@ -2,7 +2,7 @@ backend:
   name: github
   repo: black123707/GrizzlyBlog    # 例如：grizzlyblog/my-hugo-blog
   branch: main
-  base_url: https://grizzlyblog.pages.dev/
+  base_url: https://blog-oauth.g56025077.workers.dev/
   auth_endpoint: auth
 
 media_folder: "static/images"
