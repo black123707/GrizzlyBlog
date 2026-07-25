@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // 1. Write 按钮样式
   document.querySelectorAll('nav a, header a, #menu a').forEach(function(link) {
     if (link.textContent.trim() === 'Write') {
-      link.style.cssText = 'background:#1a1a1a !important;color:#fff !important;padding:6px 18px !important;border-radius:24px !important;font-size:0.85rem !important;font-weight:500 !important;letter-spacing:0.02em !important;transition:all 0.2s ease !important;margin-left:4px !important;display:inline-block !important;';
+      link.style.cssText = 'background:#1a1a1a !important;color:#fff !important;padding:3px 14px !important;border-radius:20px !important;font-size:0.8rem !important;font-weight:500 !important;letter-spacing:0.02em !important;transition:all 0.2s ease !important;margin-left:4px !important;display:inline-block !important;line-height:1.4 !important;';
       
       link.addEventListener('mouseenter', function() {
         this.style.background = '#333';
