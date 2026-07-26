@@ -4,234 +4,234 @@
    ============================================ */
 
 /* ============================================
-   0. 消除白色外圈：让外层容器完全透明
+   0. 强制覆盖 Chroma 内联样式
    ============================================ */
 
-/* 外层 highlight 容器透明 */
+/* 先清空所有代码相关元素的背景 */
 .post-content .highlight,
-.post-content .highlight > pre,
+.post-content .highlight pre,
 .post-content figure.highlight,
 .post-content .chroma,
 .post-content pre.chroma,
-.post-content pre {
+.post-content pre:has(code),
+.post-content .highlight > pre,
+.post-content .highlight > div,
+.post-content .chroma > pre,
+.post-content .chroma > div {
   background: transparent !important;
+  background-color: transparent !important;
   border: none !important;
   box-shadow: none !important;
 }
 
 /* ============================================
-   1. 代码块基础容器（统一由 code-block 控制）
+   1. 代码块主体背景（日间）
    ============================================ */
 
-/* 代码块主体 */
-.post-content .highlight,
+/* 日间：莫兰迪暖纸色 - 直接命中 pre 的 background-color */
+.post-content .highlight pre,
 .post-content pre.chroma,
-.post-content .chroma {
-  border-radius: 10px;
-  padding: 16px 20px;
-  margin: 16px 0;
-  overflow-x: auto;
-  font-size: 13.5px;
-  line-height: 1.65;
-  transition: background 0.3s ease;
+.post-content .chroma pre,
+.post-content pre:has(> code) {
+  background-color: #ede8e0 !important;
+  border: 1px solid #ddd6cc !important;
+  border-radius: 10px !important;
+  padding: 16px 20px !important;
+  margin: 16px 0 !important;
+  overflow-x: auto !important;
+  font-size: 13.5px !important;
+  line-height: 1.65 !important;
 }
 
-/* 日间：莫兰迪暖纸色背景 */
-.post-content .highlight,
-.post-content pre.chroma,
-.post-content .chroma {
-  background: #ede8e0 !important;        /* 莫兰迪暖灰纸色 */
-  border: 1px solid #ddd6cc !important;  /* 柔和边框 */
-}
-
-/* 夜间：莫兰迪深炭色背景 */
-.dark .post-content .highlight,
-.dark .post-content pre.chroma,
-.dark .post-content .chroma {
-  background: #2d2a2e !important;        /* 莫兰迪深暖灰 */
-  border: 1px solid #3d3a3e !important;  /* 柔和暗边框 */
+/* 代码块内部文字基础颜色（日间） */
+.post-content .highlight pre code,
+.post-content pre.chroma code,
+.post-content .chroma code,
+.post-content pre code {
+  color: #5a5550 !important;
+  background: transparent !important;
+  background-color: transparent !important;
 }
 
 /* ============================================
-   2. 行内代码
+   2. 代码块主体背景（夜间）
    ============================================ */
 
-.post-content code:not(pre code),
-.post-content p code,
-.post-content li code {
+.dark .post-content .highlight pre,
+.dark .post-content pre.chroma,
+.dark .post-content .chroma pre,
+.dark .post-content pre:has(> code) {
+  background-color: #2d2a2e !important;
+  border: 1px solid #3d3a3e !important;
+}
+
+/* 代码块内部文字基础颜色（夜间） */
+.dark .post-content .highlight pre code,
+.dark .post-content pre.chroma code,
+.dark .post-content .chroma code,
+.dark .post-content pre code {
+  color: #d8d4ce !important;
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* ============================================
+   3. 行内代码
+   ============================================ */
+
+.post-content code:not(pre code) {
   padding: 2px 6px;
   border-radius: 5px;
   font-size: 13px;
   font-family: 'Courier New', monospace !important;
-  transition: background 0.3s ease, color 0.3s ease;
-}
-
-/* 日间行内代码 */
-.post-content code:not(pre code) {
   background: #e0d8ce;
-  color: #a66e6e;                        /* 莫兰迪暗玫瑰 */
+  color: #a66e6e;
 }
 
-/* 夜间行内代码 */
 .dark .post-content code:not(pre code) {
   background: #3d3a3e;
-  color: #d4b8b8;                        /* 莫兰迪浅玫瑰 */
+  color: #d4b8b8;
 }
 
 /* ============================================
-   3. 代码块内部基础文字
+   4. 语法高亮 - 莫兰迪色系（日间）
    ============================================ */
 
-.chroma,
-.chroma code,
-.highlight code,
-pre code {
-  background: transparent !important;
-}
-
-/* 日间基础文字 */
-.chroma,
-.chroma code {
-  color: #5a5550 !important;             /* 莫兰迪深褐灰 */
-}
-
-/* 夜间基础文字 */
-.dark .chroma,
-.dark .chroma code {
-  color: #d8d4ce !important;             /* 莫兰迪米白 */
-}
-
-/* ============================================
-   4. 语法高亮 - 莫兰迪色系
-   ============================================ */
-
-/* ---------- 注释 ---------- */
+/* 注释 */
 .chroma .c, .chroma .cm, .chroma .c1,
 .chroma .ch, .chroma .cp, .chroma .cpf {
-  color: #b0a99f !important;             /* 莫兰迪暖灰 */
+  color: #b0a99f !important;
   font-style: italic;
 }
-.dark .chroma .c, .dark .chroma .cm, .dark .chroma .c1,
-.dark .chroma .ch, .dark .chroma .cp, .dark .chroma .cpf {
-  color: #8a837a !important;             /* 莫兰迪暗暖灰 */
-}
 
-/* ---------- 关键字 ---------- */
+/* 关键字 */
 .chroma .k, .chroma .kc, .chroma .kd,
-.chroma .kn, .chroma .kp, .chroma .kr,
-.chroma .kt {
-  color: #c9a1a1 !important;             /* 莫兰迪玫瑰 */
+.chroma .kn, .chroma .kp, .chroma .kr, .chroma .kt {
+  color: #c9a1a1 !important;
   font-weight: 600;
 }
-.dark .chroma .k, .dark .chroma .kc, .dark .chroma .kd,
-.dark .chroma .kn, .dark .chroma .kp, .dark .chroma .kr,
-.dark .chroma .kt {
-  color: #d4b8b8 !important;             /* 莫兰迪浅玫瑰 */
-}
 
-/* ---------- 字符串 ---------- */
-.chroma .s, .chroma .sa, .chroma .sb,
-.chroma .sc, .chroma .dl, .chroma .sd,
-.chroma .s2, .chroma .se, .chroma .sh,
-.chroma .si, .chroma .sx, .chroma .sr,
+/* 字符串 */
+.chroma .s, .chroma .sa, .chroma .sb, .chroma .sc,
+.chroma .dl, .chroma .sd, .chroma .s2, .chroma .se,
+.chroma .sh, .chroma .si, .chroma .sx, .chroma .sr,
 .chroma .s1, .chroma .ss {
-  color: #8faa8f !important;             /* 莫兰迪灰绿 */
-}
-.dark .chroma .s, .dark .chroma .sa, .dark .chroma .sb,
-.dark .chroma .sc, .dark .chroma .dl, .dark .chroma .sd,
-.dark .chroma .s2, .dark .chroma .se, .dark .chroma .sh,
-.dark .chroma .si, .dark .chroma .sx, .dark .chroma .sr,
-.dark .chroma .s1, .dark .chroma .ss {
-  color: #a8c4a8 !important;             /* 莫兰迪浅灰绿 */
+  color: #8faa8f !important;
 }
 
-/* ---------- 数字、布尔值 ---------- */
-.chroma .m, .chroma .mb, .chroma .mf,
-.chroma .mh, .chroma .mi, .chroma .il,
-.chroma .mo {
-  color: #8fa3b0 !important;             /* 莫兰迪灰蓝 */
-}
-.dark .chroma .m, .dark .chroma .mb, .dark .chroma .mf,
-.dark .chroma .mh, .dark .chroma .mi, .dark .chroma .il,
-.dark .chroma .mo {
-  color: #a8bcc9 !important;             /* 莫兰迪浅灰蓝 */
+/* 数字 */
+.chroma .m, .chroma .mb, .chroma .mf, .chroma .mh,
+.chroma .mi, .chroma .il, .chroma .mo {
+  color: #8fa3b0 !important;
 }
 
-/* ---------- 函数名 ---------- */
+/* 函数名 */
 .chroma .nf, .chroma .fm {
-  color: #b0a1c4 !important;             /* 莫兰迪灰紫 */
-}
-.dark .chroma .nf, .dark .chroma .fm {
-  color: #c4b8d4 !important;             /* 莫兰迪浅灰紫 */
+  color: #b0a1c4 !important;
 }
 
-/* ---------- 类名、类型 ---------- */
+/* 类名 */
 .chroma .nc, .chroma .nn {
-  color: #c4a882 !important;             /* 莫兰迪暖黄 */
-}
-.dark .chroma .nc, .dark .chroma .nn {
-  color: #d4c4a8 !important;             /* 莫兰迪浅暖黄 */
+  color: #c4a882 !important;
 }
 
-/* ---------- 变量名 ---------- */
+/* 变量名 */
 .chroma .n, .chroma .na, .chroma .nb,
 .chroma .bp, .chroma .nx, .chroma .nt {
   color: #5a5550 !important;
 }
-.dark .chroma .n, .dark .chroma .na, .dark .chroma .nb,
-.dark .chroma .bp, .dark .chroma .nx, .dark .chroma .nt {
-  color: #d8d4ce !important;
-}
 
-/* ---------- 运算符 ---------- */
+/* 运算符 */
 .chroma .o, .chroma .ow {
-  color: #b0a1a1 !important;             /* 莫兰迪灰粉 */
-}
-.dark .chroma .o, .dark .chroma .ow {
-  color: #d4c4c4 !important;             /* 莫兰迪浅灰粉 */
+  color: #b0a1a1 !important;
 }
 
-/* ---------- 预处理指令 ---------- */
+/* 预处理指令 */
 .chroma .cp {
   color: #c9a1a1 !important;
 }
-.dark .chroma .cp {
-  color: #d4b8b8 !important;
-}
 
-/* ---------- 错误 ---------- */
+/* 错误 */
 .chroma .err {
   color: #c9a1a1 !important;
   background: rgba(201, 161, 161, 0.1) !important;
 }
-.dark .chroma .err {
-  color: #d4b8b8 !important;
-  background: rgba(212, 184, 184, 0.1) !important;
-}
 
-/* ---------- 高亮行 ---------- */
+/* 高亮行 */
 .chroma .hl {
   background: rgba(180, 160, 140, 0.12) !important;
   display: block;
   width: 100%;
 }
+
+/* 行号 */
+.chroma .lnt, .chroma .ln {
+  color: #c4bbb0 !important;
+  margin-right: 12px;
+}
+
+/* ============================================
+   5. 语法高亮 - 莫兰迪色系（夜间）
+   ============================================ */
+
+.dark .chroma .c, .dark .chroma .cm, .dark .chroma .c1,
+.dark .chroma .ch, .dark .chroma .cp, .dark .chroma .cpf {
+  color: #8a837a !important;
+}
+
+.dark .chroma .k, .dark .chroma .kc, .dark .chroma .kd,
+.dark .chroma .kn, .dark .chroma .kp, .dark .chroma .kr, .dark .chroma .kt {
+  color: #d4b8b8 !important;
+}
+
+.dark .chroma .s, .dark .chroma .sa, .dark .chroma .sb, .dark .chroma .sc,
+.dark .chroma .dl, .dark .chroma .sd, .dark .chroma .s2, .dark .chroma .se,
+.dark .chroma .sh, .dark .chroma .si, .dark .chroma .sx, .dark .chroma .sr,
+.dark .chroma .s1, .dark .chroma .ss {
+  color: #a8c4a8 !important;
+}
+
+.dark .chroma .m, .dark .chroma .mb, .dark .chroma .mf, .dark .chroma .mh,
+.dark .chroma .mi, .dark .chroma .il, .dark .chroma .mo {
+  color: #a8bcc9 !important;
+}
+
+.dark .chroma .nf, .dark .chroma .fm {
+  color: #c4b8d4 !important;
+}
+
+.dark .chroma .nc, .dark .chroma .nn {
+  color: #d4c4a8 !important;
+}
+
+.dark .chroma .n, .dark .chroma .na, .dark .chroma .nb,
+.dark .chroma .bp, .dark .chroma .nx, .dark .chroma .nt {
+  color: #d8d4ce !important;
+}
+
+.dark .chroma .o, .dark .chroma .ow {
+  color: #d4c4c4 !important;
+}
+
+.dark .chroma .cp {
+  color: #d4b8b8 !important;
+}
+
+.dark .chroma .err {
+  color: #d4b8b8 !important;
+  background: rgba(212, 184, 184, 0.1) !important;
+}
+
 .dark .chroma .hl {
   background: rgba(180, 160, 140, 0.15) !important;
 }
 
-/* ---------- 行号 ---------- */
-.chroma .lnt,
-.chroma .ln {
-  color: #c4bbb0 !important;
-  margin-right: 12px;
-}
-.dark .chroma .lnt,
-.dark .chroma .ln {
+.dark .chroma .lnt, .dark .chroma .ln {
   color: #6e6862 !important;
 }
 
 /* ============================================
-   5. 复制按钮
+   6. 复制按钮
    ============================================ */
 
 .copy-code {
@@ -241,7 +241,6 @@ pre code {
   transition: all 0.2s ease !important;
 }
 
-/* 日间 */
 .copy-code {
   background: #e0d8ce !important;
   color: #5a5550 !important;
@@ -252,7 +251,6 @@ pre code {
   color: #3a3530 !important;
 }
 
-/* 夜间 */
 .dark .copy-code {
   background: #3d3a3e !important;
   color: #d8d4ce !important;
@@ -264,16 +262,17 @@ pre code {
 }
 
 /* ============================================
-   6. 移动端适配
+   7. 移动端适配
    ============================================ */
 
 @media (max-width: 768px) {
-  .post-content .highlight,
+  .post-content .highlight pre,
   .post-content pre.chroma,
-  .post-content .chroma {
-    padding: 12px 14px;
-    font-size: 12.5px;
-    border-radius: 8px;
+  .post-content .chroma pre,
+  .post-content pre:has(> code) {
+    padding: 12px 14px !important;
+    font-size: 12.5px !important;
+    border-radius: 8px !important;
   }
 
   .post-content code:not(pre code) {
