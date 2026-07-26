@@ -1,5 +1,5 @@
 /* ============================================
-   代码块风格 - 莫兰迪色系 + 日夜双模式 (高特异性版)
+   代码块风格 - 高对比度莫兰迪色系 + 日夜双模式
    放置路径: assets/css/extended/code-style.css
    ============================================ */
 
@@ -53,7 +53,7 @@ html body .post-content pre.chroma,
 html body .post-content .chroma pre,
 html body .post-content pre:has(> code) {
   background-color: #ede8e0 !important;
-  color: #333333 !important;
+  color: #2a2622 !important;
   border-radius: 0 !important;
   border: none !important;
   padding: 18px 22px !important;
@@ -63,13 +63,13 @@ html body .post-content pre:has(> code) {
   line-height: 1.65 !important;
 }
 
-/* 代码块内所有文字元素强制深灰 */
+/* 代码块内所有文字强制深色 */
 html body .post-content .highlight pre code,
 html body .post-content pre.chroma code,
 html body .post-content .chroma code,
 html body .post-content pre code,
 html body .post-content .highlight code {
-  color: #333333 !important;
+  color: #2a2622 !important;
   background: transparent !important;
   background-color: transparent !important;
 }
@@ -109,7 +109,7 @@ html[data-theme="dark"] body .post-content pre:has(> code),
   border: none !important;
 }
 
-/* 代码块内所有文字元素强制奶白 */
+/* 代码块内所有文字强制奶白 */
 html[data-theme="dark"] body .post-content .highlight pre code,
 html[data-theme="dark"] body .post-content pre.chroma code,
 html[data-theme="dark"] body .post-content .chroma code,
@@ -140,7 +140,7 @@ html body .post-content code:not(pre code) {
   font-size: 15px;
   font-family: 'Courier New', monospace !important;
   background: #e0d8ce;
-  color: #555555;
+  color: #2a2622;
 }
 
 html[data-theme="dark"] body .post-content code:not(pre code),
@@ -151,63 +151,74 @@ html[data-theme="dark"] body .post-content code:not(pre code),
 }
 
 /* ============================================
-   6. 语法高亮 - 莫兰迪色系（日间）
+   6. 语法高亮 - 高对比度莫兰迪（日间）
    ============================================ */
 
+/* 注释 - 明显可见但不抢眼 */
 html body .chroma .c, html body .chroma .cm, html body .chroma .c1,
 html body .chroma .ch, html body .chroma .cp, html body .chroma .cpf {
-  color: #9a9389 !important;
+  color: #7a7568 !important;
   font-style: italic;
 }
 
+/* 关键字 - 深藕粉 */
 html body .chroma .k, html body .chroma .kc, html body .chroma .kd,
 html body .chroma .kn, html body .chroma .kp, html body .chroma .kr, html body .chroma .kt {
-  color: #c9a1a1 !important;
+  color: #b56b6b !important;
   font-weight: 600;
 }
 
+/* 字符串 - 深豆绿 */
 html body .chroma .s, html body .chroma .sa, html body .chroma .sb, html body .chroma .sc,
 html body .chroma .dl, html body .chroma .sd, html body .chroma .s2, html body .chroma .se,
 html body .chroma .sh, html body .chroma .si, html body .chroma .sx, html body .chroma .sr,
 html body .chroma .s1, html body .chroma .ss {
-  color: #8faa8f !important;
+  color: #4e7a4e !important;
 }
 
+/* 数字 - 深灰蓝 */
 html body .chroma .m, html body .chroma .mb, html body .chroma .mf, html body .chroma .mh,
 html body .chroma .mi, html body .chroma .il, html body .chroma .mo {
-  color: #8fa3b0 !important;
+  color: #5a7a8a !important;
 }
 
+/* 函数名 - 深紫灰 */
 html body .chroma .nf, html body .chroma .fm {
-  color: #b0a1c4 !important;
+  color: #7a6a9e !important;
 }
 
+/* 类名 - 深金棕 */
 html body .chroma .nc, html body .chroma .nn {
-  color: #c4a882 !important;
+  color: #9e7e4e !important;
 }
 
+/* 变量名/普通文本 - 深暖灰（核心修复，确保不糊） */
 html body .chroma .n, html body .chroma .na, html body .chroma .nb,
 html body .chroma .bp, html body .chroma .nx, html body .chroma .nt {
-  color: #333333 !important;
+  color: #2a2622 !important;
 }
 
+/* 运算符 - 深灰红 */
 html body .chroma .o, html body .chroma .ow {
-  color: #b0a1a1 !important;
+  color: #8a6a6a !important;
 }
 
+/* 错误 */
 html body .chroma .err {
-  color: #c9a1a1 !important;
-  background: rgba(201, 161, 161, 0.1) !important;
+  color: #b56b6b !important;
+  background: rgba(181, 107, 107, 0.1) !important;
 }
 
+/* 高亮行 */
 html body .chroma .hl {
-  background: rgba(180, 160, 140, 0.12) !important;
+  background: rgba(160, 140, 120, 0.15) !important;
   display: block;
   width: 100%;
 }
 
+/* 行号 */
 html body .chroma .lnt, html body .chroma .ln {
-  color: #c4bbb0 !important;
+  color: #b0a89d !important;
   margin-right: 12px;
 }
 
@@ -313,13 +324,13 @@ html body .copy-code {
   font-size: 12px !important;
   transition: all 0.2s ease !important;
   background: #e0d8ce !important;
-  color: #555555 !important;
+  color: #2a2622 !important;
   border: 1px solid #d0c8be !important;
 }
 
 html body .copy-code:hover {
   background: #d0c8be !important;
-  color: #333333 !important;
+  color: #1a1612 !important;
 }
 
 html[data-theme="dark"] body .copy-code,
