@@ -4,7 +4,6 @@ languageCode = 'zh-CN'
 title = 'My Blog'
 
 [params]
-  customCSS = ["css/custom.css"]
   ShowPostNavLinks = true
   ShowCodeCopyButtons = true 
   ShowToc = true
@@ -12,6 +11,8 @@ title = 'My Blog'
   ShowReadingTime = true
   ShowWordCount = true
   ShowLastMod = true
+  ShowBreadCrumbs = true
+  searchHidden = true
   
   [params.profileMode]
     enabled = true
@@ -21,23 +22,11 @@ title = 'My Blog'
     imageTitle = "头像"
     imageWidth = 150
     imageHeight = 150
-    # 你现有的其他配置...
-    ShowReadingTime = true
-    ShowPostNavLinks = true
-    ShowBreadCrumbs = true
-    ShowCodeCopyButtons = true
-    # 搜索相关
-    searchHidden = true
     
   [[params.socialIcons]]
     name = "github"
     url = "https://github.com/black123707"
-  [[params.socialIcons]]
-    name = "bilibili"
-    url = "https://space.bilibili.com/520208446?spm_id_from=333.1007.0.0"
-  [[params.socialIcons]]
-    name = "xiaohongshu"
-    url = "https://www.xiaohongshu.com/user/profile/5e9e755200000000010017e8"
+  # ... 其他 socialIcons ...
     
   [[params.profileMode.buttons]]
     name = "My Blog"
@@ -71,6 +60,12 @@ title = 'My Blog'
   weight = 10
 
 [[menu.main]]
+  identifier = "memos"
+  name = "Memos"
+  url = "/memos/"
+  weight = 20
+
+[[menu.main]]
   identifier = "about"
   name = "About"
   url = "/about/"
@@ -83,12 +78,6 @@ title = 'My Blog'
   weight = 30
   [menu.main.params]
     class = "write-btn"
-    
-[[menu.main]]
-  identifier = "memos"
-  name = "Memos"
-  url = "/memos/"
-  weight = 20
 
 [taxonomies]
   tag = "tags"
@@ -96,6 +85,8 @@ title = 'My Blog'
   
 [markup]
   [markup.highlight]
-    noClasses = false      # ← 必须！让 Hugo 生成 class 而不是内联样式
+    noClasses = false
     codeFences = true
     guessSyntax = true
+    lineNos = false
+    tabWidth = 4
