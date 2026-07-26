@@ -37,17 +37,16 @@
   padding: 18px 22px !important;
   margin: 16px 0 !important;
   overflow-x: auto !important;
-  /* 修改：代码块字体 15px → 16px */
   font-size: 16px !important;
   line-height: 1.65 !important;
 }
 
-/* 日间代码块文字 */
+/* 日间代码块文字 - 深灰色 */
 .post-content .highlight pre code,
 .post-content pre.chroma code,
 .post-content .chroma code,
 .post-content pre code {
-  color: #3a3530 !important;
+  color: #333333 !important;
   background: transparent !important;
   background-color: transparent !important;
 }
@@ -75,7 +74,7 @@ html[data-theme="dark"] .post-content pre:has(> code),
   border: 1px solid #3d3a3e !important;
 }
 
-/* 夜间代码块文字 */
+/* 夜间代码块文字 - 奶白色 */
 .dark .post-content .highlight pre code,
 html[data-theme="dark"] .post-content .highlight pre code,
 [data-theme="dark"] .post-content .highlight pre code,
@@ -91,7 +90,7 @@ html[data-theme="dark"] .post-content .chroma code,
 .dark .post-content pre code,
 html[data-theme="dark"] .post-content pre code,
 [data-theme="dark"] .post-content pre code {
-  color: #d8d4ce !important;
+  color: #f5f0e8 !important;
   background: transparent !important;
   background-color: transparent !important;
 }
@@ -103,18 +102,19 @@ html[data-theme="dark"] .post-content pre code,
 .post-content code:not(pre code) {
   padding: 2px 6px;
   border-radius: 5px;
-  /* 修改：行内代码 14px → 15px */
   font-size: 15px;
   font-family: 'Courier New', monospace !important;
   background: #e0d8ce;
-  color: #a66e6e;
+  /* 行内代码也同步改为深灰 */
+  color: #555555;
 }
 
 .dark .post-content code:not(pre code),
 html[data-theme="dark"] .post-content code:not(pre code),
 [data-theme="dark"] .post-content code:not(pre code) {
   background: #3d3a3e;
-  color: #d4b8b8;
+  /* 行内代码同步改为奶白 */
+  color: #f5f0e8;
 }
 
 /* ============================================
@@ -153,9 +153,10 @@ html[data-theme="dark"] .post-content code:not(pre code),
   color: #c4a882 !important;
 }
 
+/* 变量名 - 深灰色 */
 .chroma .n, .chroma .na, .chroma .nb,
 .chroma .bp, .chroma .nx, .chroma .nt {
-  color: #3a3530 !important;
+  color: #333333 !important;
 }
 
 .chroma .o, .chroma .ow {
@@ -240,13 +241,14 @@ html[data-theme="dark"] .chroma .nc, html[data-theme="dark"] .chroma .nn,
   color: #d4c4a8 !important;
 }
 
+/* 变量名 - 奶白色 */
 .dark .chroma .n, .dark .chroma .na, .dark .chroma .nb,
 .dark .chroma .bp, .dark .chroma .nx, .dark .chroma .nt,
 html[data-theme="dark"] .chroma .n, html[data-theme="dark"] .chroma .na, html[data-theme="dark"] .chroma .nb,
 html[data-theme="dark"] .chroma .bp, html[data-theme="dark"] .chroma .nx, html[data-theme="dark"] .chroma .nt,
 [data-theme="dark"] .chroma .n, [data-theme="dark"] .chroma .na, [data-theme="dark"] .chroma .nb,
 [data-theme="dark"] .chroma .bp, [data-theme="dark"] .chroma .nx, [data-theme="dark"] .chroma .nt {
-  color: #d8d4ce !important;
+  color: #f5f0e8 !important;
 }
 
 .dark .chroma .o, .dark .chroma .ow,
@@ -305,7 +307,7 @@ html[data-theme="dark"] .chroma .lnt, html[data-theme="dark"] .chroma .ln,
 html[data-theme="dark"] .copy-code,
 [data-theme="dark"] .copy-code {
   background: #3d3a3e !important;
-  color: #d8d4ce !important;
+  color: #f5f0e8 !important;
   border: 1px solid #4d4a4e !important;
 }
 .dark .copy-code:hover,
@@ -324,14 +326,12 @@ html[data-theme="dark"] .copy-code:hover,
   .post-content pre.chroma,
   .post-content .chroma pre,
   .post-content pre:has(> code) {
-    /* 修改：移动端代码块 13.5px → 14.5px */
     padding: 14px 16px !important;
     font-size: 14.5px !important;
     border-radius: 8px !important;
   }
 
   .post-content code:not(pre code) {
-    /* 修改：移动端行内代码 13px → 14px */
     font-size: 14px;
   }
 }
