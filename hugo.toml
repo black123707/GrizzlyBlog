@@ -89,3 +89,7 @@ title = 'My Blog'
   name = "Memos"
   url = "/memos/"
   weight = 20
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
