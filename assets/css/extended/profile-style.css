@@ -1,0 +1,45 @@
+/* ============================================
+   头像 & 昵称浮动效果 + 深抹茶色
+   ============================================ */
+
+/* --- 头像浮动 --- */
+.profile img,
+.profile_inner img,
+.home-profile img,
+.profile .profile-image {
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+  cursor: pointer !important;
+}
+
+.profile img:hover,
+.profile_inner img:hover,
+.home-profile img:hover,
+.profile .profile-image:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* --- 昵称浮动 + 深抹茶色 --- */
+.profile h1,
+.profile .profile-name,
+.profile_inner h1,
+.home-profile h1 {
+  transition: transform 0.3s ease, color 0.3s ease !important;
+  cursor: pointer !important;
+  display: inline-block !important; /* 让 transform 生效 */
+}
+
+.profile h1:hover,
+.profile .profile-name:hover,
+.profile_inner h1:hover,
+.home-profile h1:hover {
+  transform: translateY(-3px) !important;
+  color: #4a7c59 !important; /* 深抹茶色 */
+}
+
+/* 夜间模式：保持深抹茶色，或改成浅抹茶色 */
+.dark .profile h1:hover,
+html[data-theme="dark"] .profile h1:hover,
+[data-theme="dark"] .profile h1:hover {
+  color: #6a9f7a !important; /* 夜间用稍亮的抹茶绿 */
+}
