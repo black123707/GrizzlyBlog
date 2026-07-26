@@ -1,0 +1,33 @@
+{{- $img := .Page.Resources.GetMatch .Destination -}}
+
+{{- if $img -}}
+  {{- $alt := .Text | default "" -}}
+  
+  {{/* 生成 WebP（1x / 2x）+ JPG 回退 */}}
+  {{- $webp := $img.Resize "800x webp q85" -}}
+  {{- $webp2x := $img.Resize "1600x webp q85" -}}
+  {{- $fallback := $img.Resize "800x jpg q85" -}}
+
+  <picture>
+    <source 
+      srcset="{{ $webp.RelPermalink }} 1x, {{ $webp2x.RelPermalink }} 2x" 
+      type="image/webp">
+    <img 
+      src="{{ $fallback.RelPermalink }}" 
+      alt="{{ $alt }}" 
+      width="{{ $img.Width }}" 
+      height="{{ $img.Height }}" 
+      loading="lazy" 
+      decoding="async"
+      style="max-width: 100%; height: auto; display: block; border-radius: 6px;">
+  </picture>
+
+{{- else -}}
+  {{/* 如果图片在 static/ 或外部链接，直接原样输出但加懒加载 */}}
+  <img 
+    src="{{ .Destination | safeURL }}" 
+    alt="{{ .Text }}" 
+    loading="lazy" 
+    decoding="async"
+    style="max-width: 100%; height: auto; display: block; border-radius: 6px;">
+{{- end -}}
