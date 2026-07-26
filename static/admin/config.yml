@@ -24,9 +24,6 @@ site_url: https://grizzlyblog.pages.dev
 media_folder: static/images/uploads
 public_folder: /images/uploads
 
-[asset]
-  fingerprint = "sha256"
-
 collections:
   # ==========================================
   # 1. 分类 (Categories) 集合
