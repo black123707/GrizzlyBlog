@@ -21,12 +21,14 @@ title = 'My Blog'
     imageTitle = "头像"
     imageWidth = 150
     imageHeight = 150
+    # 你现有的其他配置...
     ShowReadingTime = true
     ShowPostNavLinks = true
     ShowBreadCrumbs = true
     ShowCodeCopyButtons = true
+    # 搜索相关
     searchHidden = true
-     
+    
   [[params.socialIcons]]
     name = "github"
     url = "https://github.com/black123707"
@@ -36,7 +38,7 @@ title = 'My Blog'
   [[params.socialIcons]]
     name = "xiaohongshu"
     url = "https://www.xiaohongshu.com/user/profile/5e9e755200000000010017e8"
-     
+    
   [[params.profileMode.buttons]]
     name = "My Blog"
     url = "/posts" 
@@ -69,21 +71,21 @@ title = 'My Blog'
   weight = 10
 
 [[menu.main]]
-  identifier = "memos"
-  name = "Memos"
-  url = "/memos/"
-  weight = 15
-
-[[menu.main]]
   identifier = "about"
   name = "About"
   url = "/about/"
-  weight = 20
+  weight = 25
 
 [[menu.main]]
   identifier = "write"
   name = "Write"
   url = "/admin/"
-  weight = 25
+  weight = 30
   [menu.main.params]
     class = "write-btn"
+    
+[[menu.main]]
+  identifier = "memos"
+  name = "Memos"
+  url = "/memos/"
+  weight = 20
