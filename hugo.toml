@@ -93,3 +93,11 @@ title = 'My Blog'
 [taxonomies]
   tag = "tags"
   category = "categories"
+
+[markup]
+  [markup.highlight]
+    noClasses = false      # ← 必须！生成 class-based 高亮
+    codeFences = true
+    guessSyntax = true
+    lineNos = false        # 如需行号改为 true
+    tabWidth = 4
