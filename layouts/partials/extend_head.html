@@ -63,33 +63,73 @@ body, .post-content, .post-card, .profile, header, nav {
 }
 </style>
 
+<!-- ===== 1. 禁止浏览器缓存 HTML 页面 ===== -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+
+<!-- ===== 2. 构建版本检测：新部署时自动刷新 ===== -->
 <script>
-  (function() {
-    const BUILD_ID = '{{ now.Format "20060102150405" }}';
-    const stored = localStorage.getItem('site-build-id');
-    if (stored && stored !== BUILD_ID) {
-      localStorage.setItem('site-build-id', BUILD_ID);
-      location.reload();
+(function() {
+  const BUILD_ID = '{{ now.Format "20060102150405" }}';
+  const stored = localStorage.getItem('site-build-id');
+  if (stored && stored !== BUILD_ID) {
+    localStorage.setItem('site-build-id', BUILD_ID);
+    location.reload();
+  } else {
+    localStorage.setItem('site-build-id', BUILD_ID);
+  }
+})();
+</script>
+
+<!-- ===== 3. 从 bfcache 恢复时自动刷新 ===== -->
+<script>
+window.addEventListener('pageshow', function(e) {
+  if (e.persisted) {
+    window.location.reload();
+  }
+});
+</script>
+
+<!-- ===== 4. 给 CSS/JS 资源加时间戳，防止浏览器缓存旧版本 ===== -->
+<script>
+(function() {
+  var ts = Date.now();
+  var links = document.querySelectorAll('link[rel="stylesheet"], script[src]');
+  links.forEach(function(el) {
+    var attr = el.href ? 'href' : 'src';
+    var url = el[attr];
+    if (!url || url.startsWith('data:') || url.startsWith('blob:')) return;
+    if (url.includes('?')) {
+      el[attr] = url.replace(/([?&])v=[^&]+/, '$1v=' + ts) + '&v=' + ts;
     } else {
-      localStorage.setItem('site-build-id', BUILD_ID);
+      el[attr] = url + '?v=' + ts;
     }
-  })();
-  
-// 注册 Service Worker
+  });
+})();
+</script>
+
+<!-- ===== 5. Service Worker 注册 ===== -->
+<script>
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js').catch(() => {});
+  navigator.serviceWorker.register('/sw.js').catch(function() {});
 }
-  
-// 外部链接新标签页打开
+</script>
+
+<!-- ===== 6. 外部链接新标签页打开 ===== -->
+<script>
 document.querySelectorAll('.post-content a, article a').forEach(function(link) {
   if (link.hostname && link.hostname !== window.location.hostname) {
     link.target = '_blank';
     link.rel = 'noopener noreferrer';
   }
 });
-  
+</script>
+
+<!-- ===== 7. 随机座右铭 + 打字机效果 + Write 按钮样式 ===== -->
+<script>
 document.addEventListener('DOMContentLoaded', function() {
-  // ===== 随机座右铭 =====
+  // 随机座右铭列表
   const quotes = [
     "Per aspera ad astra.",
     "Stay hungry, stay foolish.",
@@ -99,8 +139,8 @@ document.addEventListener('DOMContentLoaded', function() {
     "Be the change you wish to see.",
     "Simplicity is the ultimate sophistication."
   ];
-  
-  // 1. Write 按钮样式
+
+  // Write 按钮样式
   document.querySelectorAll('nav a, header a, #menu a').forEach(function(link) {
     if (link.textContent.trim() === 'Write') {
       link.style.cssText = 'background:#1a1a1a !important;color:#fff !important;padding:3px 14px !important;border-radius:20px !important;font-size:0.8rem !important;font-weight:500 !important;letter-spacing:0.02em !important;transition:all 0.2s ease !important;margin-left:4px !important;display:inline-block !important;line-height:1.4 !important;';
@@ -115,65 +155,33 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  // 2. 打字机效果（带随机名言 + 闪烁光标）
+  // 打字机效果
   const subtitle = document.querySelector('.profile-subtitle') 
                 || document.querySelector('.profile .subtitle')
                 || document.querySelector('.home-info .entry-content')
                 || document.querySelector('.profile_inner span:last-of-type');
-  
+
   if (!subtitle) {
     console.log('Typewriter: 未找到副标题元素');
     return;
   }
-  
-  // 随机选一句，覆盖原有文本
+
   const text = quotes[Math.floor(Math.random() * quotes.length)];
-  
   subtitle.innerHTML = '';
   subtitle.style.minHeight = '1.5em';
-  
-  let i = 0;
+
+  var i = 0;
   function type() {
     if (i < text.length) {
       subtitle.innerHTML += text.charAt(i);
       i++;
       setTimeout(type, 100);
     } else {
-      // 打字结束后插入闪烁光标
-      const cursor = document.createElement('span');
+      var cursor = document.createElement('span');
       cursor.className = 'typewriter-cursor';
       subtitle.appendChild(cursor);
     }
   }
-
-  <!-- 禁止浏览器缓存（开发调试用） -->
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0">
-
-<!-- 强制刷新逻辑：检测页面从缓存恢复时自动刷新 -->
-<script>
-  (function() {
-    // 方案1：页面从 bfcache 恢复时刷新
-    window.addEventListener('pageshow', function(e) {
-      if (e.persisted) {
-        window.location.reload(true);
-      }
-    });
-    
-    // 方案2：每次加载时加时间戳（确保资源不缓存）
-    // 对 CSS/JS 等静态资源生效
-    var links = document.querySelectorAll('link[rel="stylesheet"], script[src]');
-    var ts = '?v=' + new Date().getTime();
-    links.forEach(function(el) {
-      var attr = el.href ? 'href' : 'src';
-      var url = el[attr];
-      if (url && !url.includes('?')) {
-        el[attr] = url + ts;
-      }
-    });
-  })();
-</script>
   type();
 });
 </script>
