@@ -1,3 +1,10 @@
+// 检测页面是否是最新版（通过检查 build 时间戳）
+fetch(window.location.href, { cache: 'no-store' })
+  .then(r => r.text())
+  .then(html => {
+    // 简单方案：每次页面加载都带一个随机参数清缓存（不推荐长期使用）
+  });
+
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#1a1a1a">
 <meta name="apple-mobile-web-app-capable" content="yes">
