@@ -56,7 +56,8 @@ html body .post-content pre:has(> code) {
   color: #2a2622 !important;
   border-radius: 0 !important;
   border: none !important;
-  padding: 18px 22px !important;
+  /* 修改：padding 从 18px 22px 缩小到 12px 16px */
+  padding: 12px 16px !important;
   margin: 0 !important;
   overflow-x: auto !important;
   font-size: 16px !important;
@@ -192,7 +193,7 @@ html body .chroma .nc, html body .chroma .nn {
   color: #9e7e4e !important;
 }
 
-/* 变量名/普通文本 - 深暖灰（核心修复，确保不糊） */
+/* 变量名/普通文本 - 深暖灰 */
 html body .chroma .n, html body .chroma .na, html body .chroma .nb,
 html body .chroma .bp, html body .chroma .nx, html body .chroma .nt {
   color: #2a2622 !important;
@@ -362,7 +363,8 @@ html[data-theme="dark"] body .copy-code:hover,
   html body .post-content pre.chroma,
   html body .post-content .chroma pre,
   html body .post-content pre:has(> code) {
-    padding: 14px 16px !important;
+    /* 修改：移动端 padding 同步缩小 */
+    padding: 10px 12px !important;
     font-size: 14.5px !important;
   }
 
