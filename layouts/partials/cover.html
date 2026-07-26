@@ -1,0 +1,26 @@
+{{- with .Params.cover }}
+  {{- if .image }}
+    {{- $img := $.Resources.GetMatch .image }}
+    {{- if $img }}
+      {{- $webp := $img.Resize "800x webp q85" }}
+      {{- $webp2x := $img.Resize "1600x webp q85" }}
+      {{- $fallback := $img.Resize "800x jpg q85" }}
+      <figure class="entry-cover">
+        <picture>
+          <source srcset="{{ $webp.RelPermalink }} 1x, {{ $webp2x.RelPermalink }} 2x" type="image/webp">
+          <img 
+            src="{{ $fallback.RelPermalink }}" 
+            alt="{{ .alt | default .caption }}" 
+            width="{{ $img.Width }}" 
+            height="{{ $img.Height }}" 
+            loading="eager" 
+            decoding="async"
+            style="max-width: 100%; height: auto;">
+        </picture>
+        {{- with .caption }}<figcaption>{{ . | markdownify }}</figcaption>{{ end }}
+      </figure>
+    {{- else }}
+      <figure class="entry-cover"><img src="{{ .image | absURL }}" alt="{{ .alt | default .caption }}"></figure>
+    {{- end }}
+  {{- end }}
+{{- end }}
