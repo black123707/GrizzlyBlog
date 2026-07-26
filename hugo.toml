@@ -93,3 +93,9 @@ title = 'My Blog'
 [taxonomies]
   tag = "tags"
   category = "categories"
+  
+[markup]
+  [markup.highlight]
+    noClasses = false      # ← 必须！让 Hugo 生成 class 而不是内联样式
+    codeFences = true
+    guessSyntax = true
