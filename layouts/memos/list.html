@@ -1,0 +1,26 @@
+{{ define "main" }}
+<header class="page-header">
+    <h1>{{ .Title }}</h1>
+</header>
+
+<div class="timeline-container">
+    {{ range .Pages.ByDate.Reverse }}
+    <div class="timeline-item">
+        <!-- 时间轴左侧的小圆点和时间线 -->
+        <div class="timeline-dot"></div>
+        
+        <!-- 右侧的内容卡片 -->
+        <div class="timeline-content">
+            <div class="timeline-date">
+                <time datetime="{{ .Date.Format "2006-01-02 15:04" }}">
+                    {{ .Date.Format "2006-01-02 15:04" }}
+                </time>
+            </div>
+            <div class="timeline-body">
+                {{ .Content }}
+            </div>
+        </div>
+    </div>
+    {{ end }}
+</div>
+{{ end }}
