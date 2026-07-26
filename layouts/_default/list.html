@@ -72,35 +72,48 @@
   <button class="archive-tab active" data-view="categories" onclick="switchArchiveView('categories')">分类</button>
 </div>
 
-<!-- 分类视图（默认） -->
+<!-- 分类视图（默认）- 从 content/categories/ 读取文件 -->
 <div class="archive-view" id="view-categories">
-  {{- range $name, $taxonomy := site.Taxonomies.categories }}
-  {{- $catPages := $taxonomy.Pages.ByDate.Reverse }}
-  {{- $catPages = where $catPages "Section" "posts" }}
-  {{- if $catPages }}
-  <div class="archive-group">
-    <div class="archive-group-header">
-      <span class="archive-group-title">{{ $name }}</span>
-      <span class="archive-group-count">{{ len $catPages }} 篇文章</span>
-    </div>
-    <div class="archive-group-content">
-      {{- range $catPages }}
-      <div class="archive-item">
-        <span class="archive-item-date">{{ .Date.Format "01-02" }}</span>
-        <span class="archive-item-dot">•</span>
-        <a class="archive-item-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
-        {{- if .Params.tags }}
-        <span class="archive-item-tags">
-          {{- range first 3 .Params.tags }}
-          <span class="archive-item-tag">#{{ . }}</span>
+  {{- $catFiles := where site.RegularPages "Section" "categories" }}
+  {{- if $catFiles }}
+    {{- range $catFiles }}
+      {{- $catName := .Title }}
+      {{- $postsInCat := where site.RegularPages "Params.categories" "intersect" (slice $catName) }}
+      {{- $postsInCat = where $postsInCat "Section" "posts" }}
+      <div class="archive-group">
+        <div class="archive-group-header">
+          <span class="archive-group-title">{{ $catName }}</span>
+          <span class="archive-group-count">{{ len $postsInCat }} 篇文章</span>
+        </div>
+        <div class="archive-group-content">
+          {{- if $postsInCat }}
+            {{- range $postsInCat.ByDate.Reverse }}
+            <div class="archive-item">
+              <span class="archive-item-date">{{ .Date.Format "01-02" }}</span>
+              <span class="archive-item-dot">•</span>
+              <a class="archive-item-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
+              {{- if .Params.tags }}
+              <span class="archive-item-tags">
+                {{- range first 3 .Params.tags }}
+                <span class="archive-item-tag">#{{ . }}</span>
+                {{- end }}
+              </span>
+              {{- end }}
+            </div>
+            {{- end }}
+          {{- else }}
+            <div class="archive-item">
+              <span class="archive-item-title" style="color: var(--secondary); font-style: italic;">该分类下暂无文章</span>
+            </div>
           {{- end }}
-        </span>
-        {{- end }}
+        </div>
       </div>
-      {{- end }}
+    {{- end }}
+  {{- else }}
+    <div style="text-align: center; padding: 60px 20px; color: var(--secondary);">
+      <p>暂无分类</p>
+      <p style="font-size: 14px; margin-top: 8px;">请在 Decap 后台「分类」中创建分类</p>
     </div>
-  </div>
-  {{- end }}
   {{- end }}
 </div>
 
