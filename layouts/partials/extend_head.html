@@ -5,6 +5,16 @@
 <script src="https://unpkg.com/@swup/head-plugin@2.2.0/dist/index.umd.js"></script>
 <script src="https://unpkg.com/@swup/scripts-plugin@2.1.0/dist/index.umd.js"></script>
 
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const main = document.querySelector('main.main') || document.querySelector('main');
+  if (main) {
+    main.classList.add('transition-main', 'transition-slide');
+    main.id = 'swup';
+  }
+});
+</script>
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
 @import url('https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css');
