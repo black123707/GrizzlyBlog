@@ -247,3 +247,23 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 })();
 </script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // 头像点击跳转
+  const avatar = document.querySelector('.profile img, .profile_inner img, .profile-image');
+  if (avatar) {
+    avatar.addEventListener('click', function() {
+      window.location.href = '/about';
+    });
+  }
+  
+  // 昵称点击跳转
+  const name = document.querySelector('.profile h1, .profile_inner h1, .profile-name');
+  if (name) {
+    name.addEventListener('click', function() {
+      window.location.href = '/about';
+    });
+  }
+});
+</script>
