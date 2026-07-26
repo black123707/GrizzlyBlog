@@ -7,7 +7,6 @@
    0. 强制覆盖 Chroma 内联样式
    ============================================ */
 
-/* 先清空所有代码相关元素的背景 */
 .post-content .highlight,
 .post-content .highlight pre,
 .post-content figure.highlight,
@@ -28,7 +27,6 @@
    1. 代码块主体背景（日间）
    ============================================ */
 
-/* 日间：莫兰迪暖纸色 - 直接命中 pre 的 background-color */
 .post-content .highlight pre,
 .post-content pre.chroma,
 .post-content .chroma pre,
@@ -36,21 +34,20 @@
   background-color: #ede8e0 !important;
   border: 1px solid #ddd6cc !important;
   border-radius: 10px !important;
-  /* 修改①：增大内边距，让代码块更有呼吸感 */
   padding: 18px 22px !important;
   margin: 16px 0 !important;
   overflow-x: auto !important;
-  /* 修改②：代码块文字从 13.5px 提升到 15px */
   font-size: 15px !important;
   line-height: 1.65 !important;
 }
 
-/* 代码块内部文字基础颜色（日间） */
+/* 日间代码块文字 - 调深 */
 .post-content .highlight pre code,
 .post-content pre.chroma code,
 .post-content .chroma code,
 .post-content pre code {
-  color: #5a5550 !important;
+  /* 修改：从 #5a5550 调深到 #3a3530 */
+  color: #3a3530 !important;
   background: transparent !important;
   background-color: transparent !important;
 }
@@ -59,19 +56,42 @@
    2. 代码块主体背景（夜间）
    ============================================ */
 
+/* 修改：增加 html[data-theme="dark"] 和 [data-theme="dark"] 选择器 */
 .dark .post-content .highlight pre,
+html[data-theme="dark"] .post-content .highlight pre,
+[data-theme="dark"] .post-content .highlight pre,
+
 .dark .post-content pre.chroma,
+html[data-theme="dark"] .post-content pre.chroma,
+[data-theme="dark"] .post-content pre.chroma,
+
 .dark .post-content .chroma pre,
-.dark .post-content pre:has(> code) {
+html[data-theme="dark"] .post-content .chroma pre,
+[data-theme="dark"] .post-content .chroma pre,
+
+.dark .post-content pre:has(> code),
+html[data-theme="dark"] .post-content pre:has(> code),
+[data-theme="dark"] .post-content pre:has(> code) {
   background-color: #2d2a2e !important;
   border: 1px solid #3d3a3e !important;
 }
 
-/* 代码块内部文字基础颜色（夜间） */
+/* 夜间代码块文字 */
 .dark .post-content .highlight pre code,
+html[data-theme="dark"] .post-content .highlight pre code,
+[data-theme="dark"] .post-content .highlight pre code,
+
 .dark .post-content pre.chroma code,
+html[data-theme="dark"] .post-content pre.chroma code,
+[data-theme="dark"] .post-content pre.chroma code,
+
 .dark .post-content .chroma code,
-.dark .post-content pre code {
+html[data-theme="dark"] .post-content .chroma code,
+[data-theme="dark"] .post-content .chroma code,
+
+.dark .post-content pre code,
+html[data-theme="dark"] .post-content pre code,
+[data-theme="dark"] .post-content pre code {
   color: #d8d4ce !important;
   background: transparent !important;
   background-color: transparent !important;
@@ -84,14 +104,15 @@
 .post-content code:not(pre code) {
   padding: 2px 6px;
   border-radius: 5px;
-  /* 修改③：行内代码从 13px 提升到 14px */
   font-size: 14px;
   font-family: 'Courier New', monospace !important;
   background: #e0d8ce;
   color: #a66e6e;
 }
 
-.dark .post-content code:not(pre code) {
+.dark .post-content code:not(pre code),
+html[data-theme="dark"] .post-content code:not(pre code),
+[data-theme="dark"] .post-content code:not(pre code) {
   background: #3d3a3e;
   color: #d4b8b8;
 }
@@ -100,10 +121,10 @@
    4. 语法高亮 - 莫兰迪色系（日间）
    ============================================ */
 
-/* 注释 */
+/* 注释 - 稍微加深 */
 .chroma .c, .chroma .cm, .chroma .c1,
 .chroma .ch, .chroma .cp, .chroma .cpf {
-  color: #b0a99f !important;
+  color: #9a9389 !important;
   font-style: italic;
 }
 
@@ -138,10 +159,10 @@
   color: #c4a882 !important;
 }
 
-/* 变量名 */
+/* 变量名 - 调深 */
 .chroma .n, .chroma .na, .chroma .nb,
 .chroma .bp, .chroma .nx, .chroma .nt {
-  color: #5a5550 !important;
+  color: #3a3530 !important;
 }
 
 /* 运算符 */
@@ -178,58 +199,96 @@
    ============================================ */
 
 .dark .chroma .c, .dark .chroma .cm, .dark .chroma .c1,
-.dark .chroma .ch, .dark .chroma .cp, .dark .chroma .cpf {
+.dark .chroma .ch, .dark .chroma .cp, .dark .chroma .cpf,
+html[data-theme="dark"] .chroma .c, html[data-theme="dark"] .chroma .cm, html[data-theme="dark"] .chroma .c1,
+html[data-theme="dark"] .chroma .ch, html[data-theme="dark"] .chroma .cp, html[data-theme="dark"] .chroma .cpf,
+[data-theme="dark"] .chroma .c, [data-theme="dark"] .chroma .cm, [data-theme="dark"] .chroma .c1,
+[data-theme="dark"] .chroma .ch, [data-theme="dark"] .chroma .cp, [data-theme="dark"] .chroma .cpf {
   color: #8a837a !important;
 }
 
 .dark .chroma .k, .dark .chroma .kc, .dark .chroma .kd,
-.dark .chroma .kn, .dark .chroma .kp, .dark .chroma .kr, .dark .chroma .kt {
+.dark .chroma .kn, .dark .chroma .kp, .dark .chroma .kr, .dark .chroma .kt,
+html[data-theme="dark"] .chroma .k, html[data-theme="dark"] .chroma .kc, html[data-theme="dark"] .chroma .kd,
+html[data-theme="dark"] .chroma .kn, html[data-theme="dark"] .chroma .kp, html[data-theme="dark"] .chroma .kr, html[data-theme="dark"] .chroma .kt,
+[data-theme="dark"] .chroma .k, [data-theme="dark"] .chroma .kc, [data-theme="dark"] .chroma .kd,
+[data-theme="dark"] .chroma .kn, [data-theme="dark"] .chroma .kp, [data-theme="dark"] .chroma .kr, [data-theme="dark"] .chroma .kt {
   color: #d4b8b8 !important;
 }
 
 .dark .chroma .s, .dark .chroma .sa, .dark .chroma .sb, .dark .chroma .sc,
 .dark .chroma .dl, .dark .chroma .sd, .dark .chroma .s2, .dark .chroma .se,
 .dark .chroma .sh, .dark .chroma .si, .dark .chroma .sx, .dark .chroma .sr,
-.dark .chroma .s1, .dark .chroma .ss {
+.dark .chroma .s1, .dark .chroma .ss,
+html[data-theme="dark"] .chroma .s, html[data-theme="dark"] .chroma .sa, html[data-theme="dark"] .chroma .sb, html[data-theme="dark"] .chroma .sc,
+html[data-theme="dark"] .chroma .dl, html[data-theme="dark"] .chroma .sd, html[data-theme="dark"] .chroma .s2, html[data-theme="dark"] .chroma .se,
+html[data-theme="dark"] .chroma .sh, html[data-theme="dark"] .chroma .si, html[data-theme="dark"] .chroma .sx, html[data-theme="dark"] .chroma .sr,
+html[data-theme="dark"] .chroma .s1, html[data-theme="dark"] .chroma .ss,
+[data-theme="dark"] .chroma .s, [data-theme="dark"] .chroma .sa, [data-theme="dark"] .chroma .sb, [data-theme="dark"] .chroma .sc,
+[data-theme="dark"] .chroma .dl, [data-theme="dark"] .chroma .sd, [data-theme="dark"] .chroma .s2, [data-theme="dark"] .chroma .se,
+[data-theme="dark"] .chroma .sh, [data-theme="dark"] .chroma .si, [data-theme="dark"] .chroma .sx, [data-theme="dark"] .chroma .sr,
+[data-theme="dark"] .chroma .s1, [data-theme="dark"] .chroma .ss {
   color: #a8c4a8 !important;
 }
 
 .dark .chroma .m, .dark .chroma .mb, .dark .chroma .mf, .dark .chroma .mh,
-.dark .chroma .mi, .dark .chroma .il, .dark .chroma .mo {
+.dark .chroma .mi, .dark .chroma .il, .dark .chroma .mo,
+html[data-theme="dark"] .chroma .m, html[data-theme="dark"] .chroma .mb, html[data-theme="dark"] .chroma .mf, html[data-theme="dark"] .chroma .mh,
+html[data-theme="dark"] .chroma .mi, html[data-theme="dark"] .chroma .il, html[data-theme="dark"] .chroma .mo,
+[data-theme="dark"] .chroma .m, [data-theme="dark"] .chroma .mb, [data-theme="dark"] .chroma .mf, [data-theme="dark"] .chroma .mh,
+[data-theme="dark"] .chroma .mi, [data-theme="dark"] .chroma .il, [data-theme="dark"] .chroma .mo {
   color: #a8bcc9 !important;
 }
 
-.dark .chroma .nf, .dark .chroma .fm {
+.dark .chroma .nf, .dark .chroma .fm,
+html[data-theme="dark"] .chroma .nf, html[data-theme="dark"] .chroma .fm,
+[data-theme="dark"] .chroma .nf, [data-theme="dark"] .chroma .fm {
   color: #c4b8d4 !important;
 }
 
-.dark .chroma .nc, .dark .chroma .nn {
+.dark .chroma .nc, .dark .chroma .nn,
+html[data-theme="dark"] .chroma .nc, html[data-theme="dark"] .chroma .nn,
+[data-theme="dark"] .chroma .nc, [data-theme="dark"] .chroma .nn {
   color: #d4c4a8 !important;
 }
 
 .dark .chroma .n, .dark .chroma .na, .dark .chroma .nb,
-.dark .chroma .bp, .dark .chroma .nx, .dark .chroma .nt {
+.dark .chroma .bp, .dark .chroma .nx, .dark .chroma .nt,
+html[data-theme="dark"] .chroma .n, html[data-theme="dark"] .chroma .na, html[data-theme="dark"] .chroma .nb,
+html[data-theme="dark"] .chroma .bp, html[data-theme="dark"] .chroma .nx, html[data-theme="dark"] .chroma .nt,
+[data-theme="dark"] .chroma .n, [data-theme="dark"] .chroma .na, [data-theme="dark"] .chroma .nb,
+[data-theme="dark"] .chroma .bp, [data-theme="dark"] .chroma .nx, [data-theme="dark"] .chroma .nt {
   color: #d8d4ce !important;
 }
 
-.dark .chroma .o, .dark .chroma .ow {
+.dark .chroma .o, .dark .chroma .ow,
+html[data-theme="dark"] .chroma .o, html[data-theme="dark"] .chroma .ow,
+[data-theme="dark"] .chroma .o, [data-theme="dark"] .chroma .ow {
   color: #d4c4c4 !important;
 }
 
-.dark .chroma .cp {
+.dark .chroma .cp,
+html[data-theme="dark"] .chroma .cp,
+[data-theme="dark"] .chroma .cp {
   color: #d4b8b8 !important;
 }
 
-.dark .chroma .err {
+.dark .chroma .err,
+html[data-theme="dark"] .chroma .err,
+[data-theme="dark"] .chroma .err {
   color: #d4b8b8 !important;
   background: rgba(212, 184, 184, 0.1) !important;
 }
 
-.dark .chroma .hl {
+.dark .chroma .hl,
+html[data-theme="dark"] .chroma .hl,
+[data-theme="dark"] .chroma .hl {
   background: rgba(180, 160, 140, 0.15) !important;
 }
 
-.dark .chroma .lnt, .dark .chroma .ln {
+.dark .chroma .lnt, .dark .chroma .ln,
+html[data-theme="dark"] .chroma .lnt, html[data-theme="dark"] .chroma .ln,
+[data-theme="dark"] .chroma .lnt, [data-theme="dark"] .chroma .ln {
   color: #6e6862 !important;
 }
 
@@ -254,12 +313,16 @@
   color: #3a3530 !important;
 }
 
-.dark .copy-code {
+.dark .copy-code,
+html[data-theme="dark"] .copy-code,
+[data-theme="dark"] .copy-code {
   background: #3d3a3e !important;
   color: #d8d4ce !important;
   border: 1px solid #4d4a4e !important;
 }
-.dark .copy-code:hover {
+.dark .copy-code:hover,
+html[data-theme="dark"] .copy-code:hover,
+[data-theme="dark"] .copy-code:hover {
   background: #4d4a4e !important;
   color: #fff !important;
 }
@@ -273,14 +336,12 @@
   .post-content pre.chroma,
   .post-content .chroma pre,
   .post-content pre:has(> code) {
-    /* 修改④：移动端同步增大 */
     padding: 14px 16px !important;
     font-size: 13.5px !important;
     border-radius: 8px !important;
   }
 
   .post-content code:not(pre code) {
-    /* 修改⑤：移动端行内代码同步增大 */
     font-size: 13px;
   }
 }
