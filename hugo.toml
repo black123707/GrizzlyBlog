@@ -94,14 +94,8 @@ title = 'My Blog'
 [markup]
   [markup.highlight]
     noClasses = false
+    lineNumbersInTable = false
 
 [imaging]
   quality = 85
   resampleFilter = "lanczos"
-  [imaging.exif]
-    disableDate = false
-    disableLatLong = true
-    codeFences = true
-    guessSyntax = true
-    lineNos = false
-    tabWidth = 4
