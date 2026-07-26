@@ -1,3 +1,6 @@
+{{ $swup := resources.Get "js/swup-init.js" | minify }}
+<script src="{{ $swup.RelPermalink }}"></script>
+
 <!-- ===== 访客计数 ===== -->
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="site-stats">
