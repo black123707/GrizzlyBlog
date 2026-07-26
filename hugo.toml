@@ -26,7 +26,14 @@ title = 'My Blog'
   [[params.socialIcons]]
     name = "github"
     url = "https://github.com/black123707"
-  # ... 其他 socialIcons ...
+    
+  [[params.socialIcons]]
+    name = "bilibili"
+    url = "https://space.bilibili.com/520208446?spm_id_from=333.40164.0.0"
+
+  [[params.socialIcons]]
+    name = "zhihu"
+    url = "https://www.zhihu.com/people/764168"
     
   [[params.profileMode.buttons]]
     name = "My Blog"
