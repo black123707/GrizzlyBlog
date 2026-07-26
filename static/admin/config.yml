@@ -1,0 +1,9 @@
+- name: "memos"
+    label: "说说"
+    folder: "content/memos"
+    create: true
+    delete: true
+    slug: "{{year}}-{{month}}-{{day}}-{{hour}}-{{minute}}"
+    fields:
+      - { label: "发布时间", name: "date", widget: "datetime" }
+      - { label: "正文内容", name: "body", widget: "markdown" }
