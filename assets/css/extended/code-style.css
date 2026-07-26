@@ -24,6 +24,35 @@
 }
 
 /* ============================================
+   0.5 修复圆角溢出 - 新增
+   ============================================ */
+
+/* 外层容器统一圆角并裁剪内部溢出 */
+.post-content .highlight,
+.post-content figure.highlight {
+  border-radius: 10px !important;
+  overflow: hidden !important;
+  margin: 16px 0 !important;
+}
+
+/* 清空 Chroma table 布局元素的背景和边框，防止直角溢出 */
+.post-content .highlight .chroma,
+.post-content .highlight table,
+.post-content .highlight table tbody,
+.post-content .highlight table tr,
+.post-content .highlight table td,
+.post-content .lntable,
+.post-content .lntd {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border-collapse: collapse !important;
+  border-spacing: 0 !important;
+}
+
+/* ============================================
    1. 代码块主体背景（日间）
    ============================================ */
 
@@ -35,7 +64,8 @@
   border: 1px solid #ddd6cc !important;
   border-radius: 10px !important;
   padding: 18px 22px !important;
-  margin: 16px 0 !important;
+  /* 修改：margin 由外层 .highlight 控制，避免双层间距导致溢出 */
+  margin: 0 !important;
   overflow-x: auto !important;
   font-size: 16px !important;
   line-height: 1.65 !important;
@@ -105,7 +135,6 @@ html[data-theme="dark"] .post-content pre code,
   font-size: 15px;
   font-family: 'Courier New', monospace !important;
   background: #e0d8ce;
-  /* 行内代码也同步改为深灰 */
   color: #555555;
 }
 
@@ -113,7 +142,6 @@ html[data-theme="dark"] .post-content pre code,
 html[data-theme="dark"] .post-content code:not(pre code),
 [data-theme="dark"] .post-content code:not(pre code) {
   background: #3d3a3e;
-  /* 行内代码同步改为奶白 */
   color: #f5f0e8;
 }
 
@@ -153,7 +181,6 @@ html[data-theme="dark"] .post-content code:not(pre code),
   color: #c4a882 !important;
 }
 
-/* 变量名 - 深灰色 */
 .chroma .n, .chroma .na, .chroma .nb,
 .chroma .bp, .chroma .nx, .chroma .nt {
   color: #333333 !important;
@@ -241,7 +268,6 @@ html[data-theme="dark"] .chroma .nc, html[data-theme="dark"] .chroma .nn,
   color: #d4c4a8 !important;
 }
 
-/* 变量名 - 奶白色 */
 .dark .chroma .n, .dark .chroma .na, .dark .chroma .nb,
 .dark .chroma .bp, .dark .chroma .nx, .dark .chroma .nt,
 html[data-theme="dark"] .chroma .n, html[data-theme="dark"] .chroma .na, html[data-theme="dark"] .chroma .nb,
@@ -322,6 +348,11 @@ html[data-theme="dark"] .copy-code:hover,
    ============================================ */
 
 @media (max-width: 768px) {
+  .post-content .highlight,
+  .post-content figure.highlight {
+    margin: 12px 0 !important;
+  }
+
   .post-content .highlight pre,
   .post-content pre.chroma,
   .post-content .chroma pre,
