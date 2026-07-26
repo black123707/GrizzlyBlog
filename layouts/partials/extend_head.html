@@ -1,3 +1,22 @@
+<!-- 预连接 Cloudflare -->
+<link rel="preconnect" href="https://grizzlyblog.pages.dev" crossorigin>
+<link rel="dns-prefetch" href="https://grizzlyblog.pages.dev">
+
+<!-- 预加载首屏头像（根据你的实际路径修改） -->
+<link rel="preload" as="image" href="/images/avatar.webp" type="image/webp" fetchpriority="high">
+
+<!-- 首屏关键样式：防止头像加载时布局偏移 -->
+<style>
+  .profile img, .profile_inner img, .home-profile img {
+    width: 150px !important;
+    height: 150px !important;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+  }
+  img { max-width: 100%; height: auto; }
+  @font-face { font-display: swap !important; }
+</style>
+
 <meta name="build-time" content="{{ now.Format "20060102150405" }}">
 
 <!-- Swup.js -->
