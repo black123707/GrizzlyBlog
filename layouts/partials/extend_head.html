@@ -64,23 +64,16 @@ body, .post-content, .post-card, .profile, header, nav {
 </style>
 
 <script>
-// 根治缓存：检测页面是否是最新版
-(function() {
-  fetch(location.href, { cache: 'no-store', method: 'HEAD' })
-    .then(r => {
-      const lastModified = r.headers.get('last-modified');
-      const key = 'page-lm-' + location.pathname;
-      const stored = sessionStorage.getItem(key);
-      if (stored && stored !== lastModified) {
-        // 服务器有新版本，强制刷新
-        sessionStorage.setItem(key, lastModified);
-        location.reload();
-      } else {
-        sessionStorage.setItem(key, lastModified);
-      }
-    })
-    .catch(() => {});
-})();
+  (function() {
+    const BUILD_ID = '{{ now.Format "20060102150405" }}';
+    const stored = localStorage.getItem('site-build-id');
+    if (stored && stored !== BUILD_ID) {
+      localStorage.setItem('site-build-id', BUILD_ID);
+      location.reload();
+    } else {
+      localStorage.setItem('site-build-id', BUILD_ID);
+    }
+  })();
   
 // 注册 Service Worker
 if ('serviceWorker' in navigator) {
