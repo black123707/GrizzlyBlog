@@ -1,0 +1,63 @@
+/* ============================================
+   Swup.js 页面过渡动画
+   ============================================ */
+
+/* ---- 基础设置 ---- */
+html.is-changing .transition-main {
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+/* ---- 当前页面淡出 + 上移 ---- */
+html.is-animating .transition-main {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+/* ---- 新页面淡入 + 从下方归位 ---- */
+html.is-rendering .transition-main {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---- 快速模式（浏览器前进/后退） ---- */
+html.is-changing.is-popstate .transition-main {
+  transition-duration: 0.2s;
+}
+
+/* ============================================
+   可选：更丰富的过渡效果（二选一）
+   ============================================ */
+
+/* ---- 方案 A：淡入淡出（默认，最稳定） ---- */
+.transition-fade {
+  transition: opacity 0.4s ease;
+}
+html.is-animating .transition-fade {
+  opacity: 0;
+}
+
+/* ---- 方案 B：滑动 + 淡入（更动感） ---- */
+.transition-slide {
+  transition: opacity 0.35s ease, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+html.is-animating .transition-slide {
+  opacity: 0;
+  transform: translateY(20px) scale(0.98);
+}
+html.is-rendering .transition-slide {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* ============================================
+   进度条（可选，提升感知）
+   ============================================ */
+.swup-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: #4a7c59; /* 深抹茶色，与你的主题呼应 */
+  z-index: 9999;
+  transition: width 0.2s ease;
+}
