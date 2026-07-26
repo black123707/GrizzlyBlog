@@ -1,135 +1,140 @@
 /* ============================================
-   代码块风格 - 莫兰迪色系 + 日夜双模式
+   代码块风格 - 莫兰迪色系 + 日夜双模式 (高特异性版)
    放置路径: assets/css/extended/code-style.css
    ============================================ */
 
 /* ============================================
-   0. 强制覆盖 Chroma 内联样式
+   0. 终极重置 - 清空所有 Chroma 默认背景
    ============================================ */
 
-.post-content .highlight,
-.post-content .highlight pre,
-.post-content figure.highlight,
-.post-content .chroma,
-.post-content pre.chroma,
-.post-content pre:has(code),
-.post-content .highlight > pre,
-.post-content .highlight > div,
-.post-content .chroma > pre,
-.post-content .chroma > div {
+html body .post-content .highlight,
+html body .post-content .highlight pre,
+html body .post-content figure.highlight,
+html body .post-content .chroma,
+html body .post-content pre.chroma,
+html body .post-content pre:has(code),
+html body .post-content .highlight > pre,
+html body .post-content .highlight > div,
+html body .post-content .chroma > pre,
+html body .post-content .chroma > div,
+html body .post-content .highlight table,
+html body .post-content .highlight table tbody,
+html body .post-content .highlight table tr,
+html body .post-content .highlight table td,
+html body .post-content .lntable,
+html body .post-content .lntd {
   background: transparent !important;
   background-color: transparent !important;
   border: none !important;
   box-shadow: none !important;
-}
-
-/* ============================================
-   0.5 修复圆角溢出 - 新增
-   ============================================ */
-
-/* 外层容器统一圆角并裁剪内部溢出 */
-.post-content .highlight,
-.post-content figure.highlight {
-  border-radius: 10px !important;
-  overflow: hidden !important;
-  margin: 16px 0 !important;
-}
-
-/* 清空 Chroma table 布局元素的背景和边框，防止直角溢出 */
-.post-content .highlight .chroma,
-.post-content .highlight table,
-.post-content .highlight table tbody,
-.post-content .highlight table tr,
-.post-content .highlight table td,
-.post-content .lntable,
-.post-content .lntd {
-  background: transparent !important;
-  background-color: transparent !important;
-  border: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
   border-collapse: collapse !important;
   border-spacing: 0 !important;
 }
 
 /* ============================================
-   1. 代码块主体背景（日间）
+   1. 外层容器圆角 + 背景（日间）
    ============================================ */
 
-.post-content .highlight pre,
-.post-content pre.chroma,
-.post-content .chroma pre,
-.post-content pre:has(> code) {
+html body .post-content .highlight,
+html body .post-content figure.highlight {
   background-color: #ede8e0 !important;
   border: 1px solid #ddd6cc !important;
   border-radius: 10px !important;
+  overflow: hidden !important;
+  margin: 16px 0 !important;
+}
+
+/* ============================================
+   2. 代码块主体（日间）
+   ============================================ */
+
+html body .post-content .highlight pre,
+html body .post-content pre.chroma,
+html body .post-content .chroma pre,
+html body .post-content pre:has(> code) {
+  background-color: #ede8e0 !important;
+  color: #333333 !important;
+  border-radius: 0 !important;
+  border: none !important;
   padding: 18px 22px !important;
-  /* 修改：margin 由外层 .highlight 控制，避免双层间距导致溢出 */
   margin: 0 !important;
   overflow-x: auto !important;
   font-size: 16px !important;
   line-height: 1.65 !important;
 }
 
-/* 日间代码块文字 - 深灰色 */
-.post-content .highlight pre code,
-.post-content pre.chroma code,
-.post-content .chroma code,
-.post-content pre code {
+/* 代码块内所有文字元素强制深灰 */
+html body .post-content .highlight pre code,
+html body .post-content pre.chroma code,
+html body .post-content .chroma code,
+html body .post-content pre code,
+html body .post-content .highlight code {
   color: #333333 !important;
   background: transparent !important;
   background-color: transparent !important;
 }
 
 /* ============================================
-   2. 代码块主体背景（夜间）
+   3. 外层容器圆角 + 背景（夜间）
    ============================================ */
 
-.dark .post-content .highlight pre,
-html[data-theme="dark"] .post-content .highlight pre,
-[data-theme="dark"] .post-content .highlight pre,
-
-.dark .post-content pre.chroma,
-html[data-theme="dark"] .post-content pre.chroma,
-[data-theme="dark"] .post-content pre.chroma,
-
-.dark .post-content .chroma pre,
-html[data-theme="dark"] .post-content .chroma pre,
-[data-theme="dark"] .post-content .chroma pre,
-
-.dark .post-content pre:has(> code),
-html[data-theme="dark"] .post-content pre:has(> code),
-[data-theme="dark"] .post-content pre:has(> code) {
+html[data-theme="dark"] body .post-content .highlight,
+html[data-theme="dark"] body .post-content figure.highlight,
+[data-theme="dark"] body .post-content .highlight,
+[data-theme="dark"] body .post-content figure.highlight,
+.dark body .post-content .highlight,
+.dark body .post-content figure.highlight {
   background-color: #2d2a2e !important;
   border: 1px solid #3d3a3e !important;
 }
 
-/* 夜间代码块文字 - 奶白色 */
-.dark .post-content .highlight pre code,
-html[data-theme="dark"] .post-content .highlight pre code,
-[data-theme="dark"] .post-content .highlight pre code,
+/* ============================================
+   4. 代码块主体（夜间）
+   ============================================ */
 
-.dark .post-content pre.chroma code,
-html[data-theme="dark"] .post-content pre.chroma code,
-[data-theme="dark"] .post-content pre.chroma code,
+html[data-theme="dark"] body .post-content .highlight pre,
+html[data-theme="dark"] body .post-content pre.chroma,
+html[data-theme="dark"] body .post-content .chroma pre,
+html[data-theme="dark"] body .post-content pre:has(> code),
+[data-theme="dark"] body .post-content .highlight pre,
+[data-theme="dark"] body .post-content pre.chroma,
+[data-theme="dark"] body .post-content .chroma pre,
+[data-theme="dark"] body .post-content pre:has(> code),
+.dark body .post-content .highlight pre,
+.dark body .post-content pre.chroma,
+.dark body .post-content .chroma pre,
+.dark body .post-content pre:has(> code) {
+  background-color: #2d2a2e !important;
+  color: #f5f0e8 !important;
+  border: none !important;
+}
 
-.dark .post-content .chroma code,
-html[data-theme="dark"] .post-content .chroma code,
-[data-theme="dark"] .post-content .chroma code,
-
-.dark .post-content pre code,
-html[data-theme="dark"] .post-content pre code,
-[data-theme="dark"] .post-content pre code {
+/* 代码块内所有文字元素强制奶白 */
+html[data-theme="dark"] body .post-content .highlight pre code,
+html[data-theme="dark"] body .post-content pre.chroma code,
+html[data-theme="dark"] body .post-content .chroma code,
+html[data-theme="dark"] body .post-content pre code,
+html[data-theme="dark"] body .post-content .highlight code,
+[data-theme="dark"] body .post-content .highlight pre code,
+[data-theme="dark"] body .post-content pre.chroma code,
+[data-theme="dark"] body .post-content .chroma code,
+[data-theme="dark"] body .post-content pre code,
+[data-theme="dark"] body .post-content .highlight code,
+.dark body .post-content .highlight pre code,
+.dark body .post-content pre.chroma code,
+.dark body .post-content .chroma code,
+.dark body .post-content pre code,
+.dark body .post-content .highlight code {
   color: #f5f0e8 !important;
   background: transparent !important;
   background-color: transparent !important;
 }
 
 /* ============================================
-   3. 行内代码
+   5. 行内代码
    ============================================ */
 
-.post-content code:not(pre code) {
+html body .post-content code:not(pre code) {
   padding: 2px 6px;
   border-radius: 5px;
   font-size: 15px;
@@ -138,231 +143,219 @@ html[data-theme="dark"] .post-content pre code,
   color: #555555;
 }
 
-.dark .post-content code:not(pre code),
-html[data-theme="dark"] .post-content code:not(pre code),
-[data-theme="dark"] .post-content code:not(pre code) {
+html[data-theme="dark"] body .post-content code:not(pre code),
+[data-theme="dark"] body .post-content code:not(pre code),
+.dark body .post-content code:not(pre code) {
   background: #3d3a3e;
   color: #f5f0e8;
 }
 
 /* ============================================
-   4. 语法高亮 - 莫兰迪色系（日间）
+   6. 语法高亮 - 莫兰迪色系（日间）
    ============================================ */
 
-.chroma .c, .chroma .cm, .chroma .c1,
-.chroma .ch, .chroma .cp, .chroma .cpf {
+html body .chroma .c, html body .chroma .cm, html body .chroma .c1,
+html body .chroma .ch, html body .chroma .cp, html body .chroma .cpf {
   color: #9a9389 !important;
   font-style: italic;
 }
 
-.chroma .k, .chroma .kc, .chroma .kd,
-.chroma .kn, .chroma .kp, .chroma .kr, .chroma .kt {
+html body .chroma .k, html body .chroma .kc, html body .chroma .kd,
+html body .chroma .kn, html body .chroma .kp, html body .chroma .kr, html body .chroma .kt {
   color: #c9a1a1 !important;
   font-weight: 600;
 }
 
-.chroma .s, .chroma .sa, .chroma .sb, .chroma .sc,
-.chroma .dl, .chroma .sd, .chroma .s2, .chroma .se,
-.chroma .sh, .chroma .si, .chroma .sx, .chroma .sr,
-.chroma .s1, .chroma .ss {
+html body .chroma .s, html body .chroma .sa, html body .chroma .sb, html body .chroma .sc,
+html body .chroma .dl, html body .chroma .sd, html body .chroma .s2, html body .chroma .se,
+html body .chroma .sh, html body .chroma .si, html body .chroma .sx, html body .chroma .sr,
+html body .chroma .s1, html body .chroma .ss {
   color: #8faa8f !important;
 }
 
-.chroma .m, .chroma .mb, .chroma .mf, .chroma .mh,
-.chroma .mi, .chroma .il, .chroma .mo {
+html body .chroma .m, html body .chroma .mb, html body .chroma .mf, html body .chroma .mh,
+html body .chroma .mi, html body .chroma .il, html body .chroma .mo {
   color: #8fa3b0 !important;
 }
 
-.chroma .nf, .chroma .fm {
+html body .chroma .nf, html body .chroma .fm {
   color: #b0a1c4 !important;
 }
 
-.chroma .nc, .chroma .nn {
+html body .chroma .nc, html body .chroma .nn {
   color: #c4a882 !important;
 }
 
-.chroma .n, .chroma .na, .chroma .nb,
-.chroma .bp, .chroma .nx, .chroma .nt {
+html body .chroma .n, html body .chroma .na, html body .chroma .nb,
+html body .chroma .bp, html body .chroma .nx, html body .chroma .nt {
   color: #333333 !important;
 }
 
-.chroma .o, .chroma .ow {
+html body .chroma .o, html body .chroma .ow {
   color: #b0a1a1 !important;
 }
 
-.chroma .cp {
-  color: #c9a1a1 !important;
-}
-
-.chroma .err {
+html body .chroma .err {
   color: #c9a1a1 !important;
   background: rgba(201, 161, 161, 0.1) !important;
 }
 
-.chroma .hl {
+html body .chroma .hl {
   background: rgba(180, 160, 140, 0.12) !important;
   display: block;
   width: 100%;
 }
 
-.chroma .lnt, .chroma .ln {
+html body .chroma .lnt, html body .chroma .ln {
   color: #c4bbb0 !important;
   margin-right: 12px;
 }
 
 /* ============================================
-   5. 语法高亮 - 莫兰迪色系（夜间）
+   7. 语法高亮 - 莫兰迪色系（夜间）
    ============================================ */
 
-.dark .chroma .c, .dark .chroma .cm, .dark .chroma .c1,
-.dark .chroma .ch, .dark .chroma .cp, .dark .chroma .cpf,
-html[data-theme="dark"] .chroma .c, html[data-theme="dark"] .chroma .cm, html[data-theme="dark"] .chroma .c1,
-html[data-theme="dark"] .chroma .ch, html[data-theme="dark"] .chroma .cp, html[data-theme="dark"] .chroma .cpf,
-[data-theme="dark"] .chroma .c, [data-theme="dark"] .chroma .cm, [data-theme="dark"] .chroma .c1,
-[data-theme="dark"] .chroma .ch, [data-theme="dark"] .chroma .cp, [data-theme="dark"] .chroma .cpf {
+html[data-theme="dark"] body .chroma .c, html[data-theme="dark"] body .chroma .cm, html[data-theme="dark"] body .chroma .c1,
+html[data-theme="dark"] body .chroma .ch, html[data-theme="dark"] body .chroma .cp, html[data-theme="dark"] body .chroma .cpf,
+[data-theme="dark"] body .chroma .c, [data-theme="dark"] body .chroma .cm, [data-theme="dark"] body .chroma .c1,
+[data-theme="dark"] body .chroma .ch, [data-theme="dark"] body .chroma .cp, [data-theme="dark"] body .chroma .cpf,
+.dark body .chroma .c, .dark body .chroma .cm, .dark body .chroma .c1,
+.dark body .chroma .ch, .dark body .chroma .cp, .dark body .chroma .cpf {
   color: #8a837a !important;
 }
 
-.dark .chroma .k, .dark .chroma .kc, .dark .chroma .kd,
-.dark .chroma .kn, .dark .chroma .kp, .dark .chroma .kr, .dark .chroma .kt,
-html[data-theme="dark"] .chroma .k, html[data-theme="dark"] .chroma .kc, html[data-theme="dark"] .chroma .kd,
-html[data-theme="dark"] .chroma .kn, html[data-theme="dark"] .chroma .kp, html[data-theme="dark"] .chroma .kr, html[data-theme="dark"] .chroma .kt,
-[data-theme="dark"] .chroma .k, [data-theme="dark"] .chroma .kc, [data-theme="dark"] .chroma .kd,
-[data-theme="dark"] .chroma .kn, [data-theme="dark"] .chroma .kp, [data-theme="dark"] .chroma .kr, [data-theme="dark"] .chroma .kt {
+html[data-theme="dark"] body .chroma .k, html[data-theme="dark"] body .chroma .kc, html[data-theme="dark"] body .chroma .kd,
+html[data-theme="dark"] body .chroma .kn, html[data-theme="dark"] body .chroma .kp, html[data-theme="dark"] body .chroma .kr, html[data-theme="dark"] body .chroma .kt,
+[data-theme="dark"] body .chroma .k, [data-theme="dark"] body .chroma .kc, [data-theme="dark"] body .chroma .kd,
+[data-theme="dark"] body .chroma .kn, [data-theme="dark"] body .chroma .kp, [data-theme="dark"] body .chroma .kr, [data-theme="dark"] body .chroma .kt,
+.dark body .chroma .k, .dark body .chroma .kc, .dark body .chroma .kd,
+.dark body .chroma .kn, .dark body .chroma .kp, .dark body .chroma .kr, .dark body .chroma .kt {
   color: #d4b8b8 !important;
 }
 
-.dark .chroma .s, .dark .chroma .sa, .dark .chroma .sb, .dark .chroma .sc,
-.dark .chroma .dl, .dark .chroma .sd, .dark .chroma .s2, .dark .chroma .se,
-.dark .chroma .sh, .dark .chroma .si, .dark .chroma .sx, .dark .chroma .sr,
-.dark .chroma .s1, .dark .chroma .ss,
-html[data-theme="dark"] .chroma .s, html[data-theme="dark"] .chroma .sa, html[data-theme="dark"] .chroma .sb, html[data-theme="dark"] .chroma .sc,
-html[data-theme="dark"] .chroma .dl, html[data-theme="dark"] .chroma .sd, html[data-theme="dark"] .chroma .s2, html[data-theme="dark"] .chroma .se,
-html[data-theme="dark"] .chroma .sh, html[data-theme="dark"] .chroma .si, html[data-theme="dark"] .chroma .sx, html[data-theme="dark"] .chroma .sr,
-html[data-theme="dark"] .chroma .s1, html[data-theme="dark"] .chroma .ss,
-[data-theme="dark"] .chroma .s, [data-theme="dark"] .chroma .sa, [data-theme="dark"] .chroma .sb, [data-theme="dark"] .chroma .sc,
-[data-theme="dark"] .chroma .dl, [data-theme="dark"] .chroma .sd, [data-theme="dark"] .chroma .s2, [data-theme="dark"] .chroma .se,
-[data-theme="dark"] .chroma .sh, [data-theme="dark"] .chroma .si, [data-theme="dark"] .chroma .sx, [data-theme="dark"] .chroma .sr,
-[data-theme="dark"] .chroma .s1, [data-theme="dark"] .chroma .ss {
+html[data-theme="dark"] body .chroma .s, html[data-theme="dark"] body .chroma .sa, html[data-theme="dark"] body .chroma .sb, html[data-theme="dark"] body .chroma .sc,
+html[data-theme="dark"] body .chroma .dl, html[data-theme="dark"] body .chroma .sd, html[data-theme="dark"] body .chroma .s2, html[data-theme="dark"] body .chroma .se,
+html[data-theme="dark"] body .chroma .sh, html[data-theme="dark"] body .chroma .si, html[data-theme="dark"] body .chroma .sx, html[data-theme="dark"] body .chroma .sr,
+html[data-theme="dark"] body .chroma .s1, html[data-theme="dark"] body .chroma .ss,
+[data-theme="dark"] body .chroma .s, [data-theme="dark"] body .chroma .sa, [data-theme="dark"] body .chroma .sb, [data-theme="dark"] body .chroma .sc,
+[data-theme="dark"] body .chroma .dl, [data-theme="dark"] body .chroma .sd, [data-theme="dark"] body .chroma .s2, [data-theme="dark"] body .chroma .se,
+[data-theme="dark"] body .chroma .sh, [data-theme="dark"] body .chroma .si, [data-theme="dark"] body .chroma .sx, [data-theme="dark"] body .chroma .sr,
+[data-theme="dark"] body .chroma .s1, [data-theme="dark"] body .chroma .ss,
+.dark body .chroma .s, .dark body .chroma .sa, .dark body .chroma .sb, .dark body .chroma .sc,
+.dark body .chroma .dl, .dark body .chroma .sd, .dark body .chroma .s2, .dark body .chroma .se,
+.dark body .chroma .sh, .dark body .chroma .si, .dark body .chroma .sx, .dark body .chroma .sr,
+.dark body .chroma .s1, .dark body .chroma .ss {
   color: #a8c4a8 !important;
 }
 
-.dark .chroma .m, .dark .chroma .mb, .dark .chroma .mf, .dark .chroma .mh,
-.dark .chroma .mi, .dark .chroma .il, .dark .chroma .mo,
-html[data-theme="dark"] .chroma .m, html[data-theme="dark"] .chroma .mb, html[data-theme="dark"] .chroma .mf, html[data-theme="dark"] .chroma .mh,
-html[data-theme="dark"] .chroma .mi, html[data-theme="dark"] .chroma .il, html[data-theme="dark"] .chroma .mo,
-[data-theme="dark"] .chroma .m, [data-theme="dark"] .chroma .mb, [data-theme="dark"] .chroma .mf, [data-theme="dark"] .chroma .mh,
-[data-theme="dark"] .chroma .mi, [data-theme="dark"] .chroma .il, [data-theme="dark"] .chroma .mo {
+html[data-theme="dark"] body .chroma .m, html[data-theme="dark"] body .chroma .mb, html[data-theme="dark"] body .chroma .mf, html[data-theme="dark"] body .chroma .mh,
+html[data-theme="dark"] body .chroma .mi, html[data-theme="dark"] body .chroma .il, html[data-theme="dark"] body .chroma .mo,
+[data-theme="dark"] body .chroma .m, [data-theme="dark"] body .chroma .mb, [data-theme="dark"] body .chroma .mf, [data-theme="dark"] body .chroma .mh,
+[data-theme="dark"] body .chroma .mi, [data-theme="dark"] body .chroma .il, [data-theme="dark"] body .chroma .mo,
+.dark body .chroma .m, .dark body .chroma .mb, .dark body .chroma .mf, .dark body .chroma .mh,
+.dark body .chroma .mi, .dark body .chroma .il, .dark body .chroma .mo {
   color: #a8bcc9 !important;
 }
 
-.dark .chroma .nf, .dark .chroma .fm,
-html[data-theme="dark"] .chroma .nf, html[data-theme="dark"] .chroma .fm,
-[data-theme="dark"] .chroma .nf, [data-theme="dark"] .chroma .fm {
+html[data-theme="dark"] body .chroma .nf, html[data-theme="dark"] body .chroma .fm,
+[data-theme="dark"] body .chroma .nf, [data-theme="dark"] body .chroma .fm,
+.dark body .chroma .nf, .dark body .chroma .fm {
   color: #c4b8d4 !important;
 }
 
-.dark .chroma .nc, .dark .chroma .nn,
-html[data-theme="dark"] .chroma .nc, html[data-theme="dark"] .chroma .nn,
-[data-theme="dark"] .chroma .nc, [data-theme="dark"] .chroma .nn {
+html[data-theme="dark"] body .chroma .nc, html[data-theme="dark"] body .chroma .nn,
+[data-theme="dark"] body .chroma .nc, [data-theme="dark"] body .chroma .nn,
+.dark body .chroma .nc, .dark body .chroma .nn {
   color: #d4c4a8 !important;
 }
 
-.dark .chroma .n, .dark .chroma .na, .dark .chroma .nb,
-.dark .chroma .bp, .dark .chroma .nx, .dark .chroma .nt,
-html[data-theme="dark"] .chroma .n, html[data-theme="dark"] .chroma .na, html[data-theme="dark"] .chroma .nb,
-html[data-theme="dark"] .chroma .bp, html[data-theme="dark"] .chroma .nx, html[data-theme="dark"] .chroma .nt,
-[data-theme="dark"] .chroma .n, [data-theme="dark"] .chroma .na, [data-theme="dark"] .chroma .nb,
-[data-theme="dark"] .chroma .bp, [data-theme="dark"] .chroma .nx, [data-theme="dark"] .chroma .nt {
+html[data-theme="dark"] body .chroma .n, html[data-theme="dark"] body .chroma .na, html[data-theme="dark"] body .chroma .nb,
+html[data-theme="dark"] body .chroma .bp, html[data-theme="dark"] body .chroma .nx, html[data-theme="dark"] body .chroma .nt,
+[data-theme="dark"] body .chroma .n, [data-theme="dark"] body .chroma .na, [data-theme="dark"] body .chroma .nb,
+[data-theme="dark"] body .chroma .bp, [data-theme="dark"] body .chroma .nx, [data-theme="dark"] body .chroma .nt,
+.dark body .chroma .n, .dark body .chroma .na, .dark body .chroma .nb,
+.dark body .chroma .bp, .dark body .chroma .nx, .dark body .chroma .nt {
   color: #f5f0e8 !important;
 }
 
-.dark .chroma .o, .dark .chroma .ow,
-html[data-theme="dark"] .chroma .o, html[data-theme="dark"] .chroma .ow,
-[data-theme="dark"] .chroma .o, [data-theme="dark"] .chroma .ow {
+html[data-theme="dark"] body .chroma .o, html[data-theme="dark"] body .chroma .ow,
+[data-theme="dark"] body .chroma .o, [data-theme="dark"] body .chroma .ow,
+.dark body .chroma .o, .dark body .chroma .ow {
   color: #d4c4c4 !important;
 }
 
-.dark .chroma .cp,
-html[data-theme="dark"] .chroma .cp,
-[data-theme="dark"] .chroma .cp {
-  color: #d4b8b8 !important;
-}
-
-.dark .chroma .err,
-html[data-theme="dark"] .chroma .err,
-[data-theme="dark"] .chroma .err {
+html[data-theme="dark"] body .chroma .err,
+[data-theme="dark"] body .chroma .err,
+.dark body .chroma .err {
   color: #d4b8b8 !important;
   background: rgba(212, 184, 184, 0.1) !important;
 }
 
-.dark .chroma .hl,
-html[data-theme="dark"] .chroma .hl,
-[data-theme="dark"] .chroma .hl {
+html[data-theme="dark"] body .chroma .hl,
+[data-theme="dark"] body .chroma .hl,
+.dark body .chroma .hl {
   background: rgba(180, 160, 140, 0.15) !important;
 }
 
-.dark .chroma .lnt, .dark .chroma .ln,
-html[data-theme="dark"] .chroma .lnt, html[data-theme="dark"] .chroma .ln,
-[data-theme="dark"] .chroma .lnt, [data-theme="dark"] .chroma .ln {
+html[data-theme="dark"] body .chroma .lnt, html[data-theme="dark"] body .chroma .ln,
+[data-theme="dark"] body .chroma .lnt, [data-theme="dark"] body .chroma .ln,
+.dark body .chroma .lnt, .dark body .chroma .ln {
   color: #6e6862 !important;
 }
 
 /* ============================================
-   6. 复制按钮
+   8. 复制按钮
    ============================================ */
 
-.copy-code {
+html body .copy-code {
   border-radius: 6px !important;
   padding: 4px 10px !important;
   font-size: 12px !important;
   transition: all 0.2s ease !important;
-}
-
-.copy-code {
   background: #e0d8ce !important;
-  color: #5a5550 !important;
+  color: #555555 !important;
   border: 1px solid #d0c8be !important;
 }
-.copy-code:hover {
+
+html body .copy-code:hover {
   background: #d0c8be !important;
-  color: #3a3530 !important;
+  color: #333333 !important;
 }
 
-.dark .copy-code,
-html[data-theme="dark"] .copy-code,
-[data-theme="dark"] .copy-code {
+html[data-theme="dark"] body .copy-code,
+[data-theme="dark"] body .copy-code,
+.dark body .copy-code {
   background: #3d3a3e !important;
   color: #f5f0e8 !important;
   border: 1px solid #4d4a4e !important;
 }
-.dark .copy-code:hover,
-html[data-theme="dark"] .copy-code:hover,
-[data-theme="dark"] .copy-code:hover {
+
+html[data-theme="dark"] body .copy-code:hover,
+[data-theme="dark"] body .copy-code:hover,
+.dark body .copy-code:hover {
   background: #4d4a4e !important;
   color: #fff !important;
 }
 
 /* ============================================
-   7. 移动端适配
+   9. 移动端适配
    ============================================ */
 
 @media (max-width: 768px) {
-  .post-content .highlight,
-  .post-content figure.highlight {
+  html body .post-content .highlight,
+  html body .post-content figure.highlight {
     margin: 12px 0 !important;
   }
 
-  .post-content .highlight pre,
-  .post-content pre.chroma,
-  .post-content .chroma pre,
-  .post-content pre:has(> code) {
+  html body .post-content .highlight pre,
+  html body .post-content pre.chroma,
+  html body .post-content .chroma pre,
+  html body .post-content pre:has(> code) {
     padding: 14px 16px !important;
     font-size: 14.5px !important;
-    border-radius: 8px !important;
   }
 
-  .post-content code:not(pre code) {
+  html body .post-content code:not(pre code) {
     font-size: 14px;
   }
 }
