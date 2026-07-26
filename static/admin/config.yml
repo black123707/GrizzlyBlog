@@ -1,8 +1,25 @@
-- name: "memos"
+backend:
+  name: git-gateway
+  branch: main
+  # 你的 DecapBridge 认证网关地址和配置...
+
+media_folder: "static/images"
+public_folder: "/images"
+
+collections:
+  - name: "posts"
+    label: "文章"
+    folder: "content/posts"
+    create: true
+    fields:
+      - { label: "标题", name: "title", widget: "string" }
+      - { label: "发布时间", name: "date", widget: "datetime" }
+      - { label: "正文", name: "body", widget: "markdown" }
+
+  - name: "memos"
     label: "说说"
     folder: "content/memos"
     create: true
-    delete: true
     slug: "{{year}}-{{month}}-{{day}}-{{hour}}-{{minute}}"
     fields:
       - { label: "发布时间", name: "date", widget: "datetime" }
