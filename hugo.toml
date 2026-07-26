@@ -74,17 +74,21 @@ title = 'My Blog'
   identifier = "about"
   name = "About"
   url = "/about/"
-  weight = 20
+  weight = 25
 
 [[menu.main]]
   identifier = "write"
   name = "Write"
   url = "/admin/"
-  weight = 25
+  weight = 30
   [menu.main.params]
     class = "write-btn"
 
-
+[[menu.main]]
+  identifier = "memos"
+  name = "Memos"
+  url = "/memos/"
+  weight = 20
 
 
 
