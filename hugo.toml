@@ -99,3 +99,9 @@ title = 'My Blog'
 [imaging]
   quality = 85
   resampleFilter = "lanczos"
+
+[minify]
+  disableCSS = false
+  disableHTML = false
+  disableJS = false
+  disableJSON = false
