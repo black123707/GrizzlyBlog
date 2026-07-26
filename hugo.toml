@@ -52,9 +52,6 @@ title = 'My Blog'
   minMatchCharLength = 2
   keys = ["title", "summary", "content"]
 
-[minify]
-  disableXML = true
-
 [[menu.main]]
   identifier = "search"
   name = "🔍"
