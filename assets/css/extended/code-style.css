@@ -37,16 +37,16 @@
   padding: 18px 22px !important;
   margin: 16px 0 !important;
   overflow-x: auto !important;
-  font-size: 15px !important;
+  /* 修改：代码块字体 15px → 16px */
+  font-size: 16px !important;
   line-height: 1.65 !important;
 }
 
-/* 日间代码块文字 - 调深 */
+/* 日间代码块文字 */
 .post-content .highlight pre code,
 .post-content pre.chroma code,
 .post-content .chroma code,
 .post-content pre code {
-  /* 修改：从 #5a5550 调深到 #3a3530 */
   color: #3a3530 !important;
   background: transparent !important;
   background-color: transparent !important;
@@ -56,7 +56,6 @@
    2. 代码块主体背景（夜间）
    ============================================ */
 
-/* 修改：增加 html[data-theme="dark"] 和 [data-theme="dark"] 选择器 */
 .dark .post-content .highlight pre,
 html[data-theme="dark"] .post-content .highlight pre,
 [data-theme="dark"] .post-content .highlight pre,
@@ -104,7 +103,8 @@ html[data-theme="dark"] .post-content pre code,
 .post-content code:not(pre code) {
   padding: 2px 6px;
   border-radius: 5px;
-  font-size: 14px;
+  /* 修改：行内代码 14px → 15px */
+  font-size: 15px;
   font-family: 'Courier New', monospace !important;
   background: #e0d8ce;
   color: #a66e6e;
@@ -121,21 +121,18 @@ html[data-theme="dark"] .post-content code:not(pre code),
    4. 语法高亮 - 莫兰迪色系（日间）
    ============================================ */
 
-/* 注释 - 稍微加深 */
 .chroma .c, .chroma .cm, .chroma .c1,
 .chroma .ch, .chroma .cp, .chroma .cpf {
   color: #9a9389 !important;
   font-style: italic;
 }
 
-/* 关键字 */
 .chroma .k, .chroma .kc, .chroma .kd,
 .chroma .kn, .chroma .kp, .chroma .kr, .chroma .kt {
   color: #c9a1a1 !important;
   font-weight: 600;
 }
 
-/* 字符串 */
 .chroma .s, .chroma .sa, .chroma .sb, .chroma .sc,
 .chroma .dl, .chroma .sd, .chroma .s2, .chroma .se,
 .chroma .sh, .chroma .si, .chroma .sx, .chroma .sr,
@@ -143,52 +140,43 @@ html[data-theme="dark"] .post-content code:not(pre code),
   color: #8faa8f !important;
 }
 
-/* 数字 */
 .chroma .m, .chroma .mb, .chroma .mf, .chroma .mh,
 .chroma .mi, .chroma .il, .chroma .mo {
   color: #8fa3b0 !important;
 }
 
-/* 函数名 */
 .chroma .nf, .chroma .fm {
   color: #b0a1c4 !important;
 }
 
-/* 类名 */
 .chroma .nc, .chroma .nn {
   color: #c4a882 !important;
 }
 
-/* 变量名 - 调深 */
 .chroma .n, .chroma .na, .chroma .nb,
 .chroma .bp, .chroma .nx, .chroma .nt {
   color: #3a3530 !important;
 }
 
-/* 运算符 */
 .chroma .o, .chroma .ow {
   color: #b0a1a1 !important;
 }
 
-/* 预处理指令 */
 .chroma .cp {
   color: #c9a1a1 !important;
 }
 
-/* 错误 */
 .chroma .err {
   color: #c9a1a1 !important;
   background: rgba(201, 161, 161, 0.1) !important;
 }
 
-/* 高亮行 */
 .chroma .hl {
   background: rgba(180, 160, 140, 0.12) !important;
   display: block;
   width: 100%;
 }
 
-/* 行号 */
 .chroma .lnt, .chroma .ln {
   color: #c4bbb0 !important;
   margin-right: 12px;
@@ -336,12 +324,14 @@ html[data-theme="dark"] .copy-code:hover,
   .post-content pre.chroma,
   .post-content .chroma pre,
   .post-content pre:has(> code) {
+    /* 修改：移动端代码块 13.5px → 14.5px */
     padding: 14px 16px !important;
-    font-size: 13.5px !important;
+    font-size: 14.5px !important;
     border-radius: 8px !important;
   }
 
   .post-content code:not(pre code) {
-    font-size: 13px;
+    /* 修改：移动端行内代码 13px → 14px */
+    font-size: 14px;
   }
 }
