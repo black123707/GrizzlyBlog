@@ -64,6 +64,24 @@ body, .post-content, .post-card, .profile, header, nav {
 </style>
 
 <script>
+// 根治缓存：检测页面是否是最新版
+(function() {
+  fetch(location.href, { cache: 'no-store', method: 'HEAD' })
+    .then(r => {
+      const lastModified = r.headers.get('last-modified');
+      const key = 'page-lm-' + location.pathname;
+      const stored = sessionStorage.getItem(key);
+      if (stored && stored !== lastModified) {
+        // 服务器有新版本，强制刷新
+        sessionStorage.setItem(key, lastModified);
+        location.reload();
+      } else {
+        sessionStorage.setItem(key, lastModified);
+      }
+    })
+    .catch(() => {});
+})();
+  
 // 注册 Service Worker
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/sw.js').catch(() => {});
