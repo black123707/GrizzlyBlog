@@ -409,5 +409,5 @@
 }
 
 .home-info .buttons {
-  margin-top: 0.3rem !important;  /* 留一点点呼吸空间，设为 0 可完全紧贴 */
+  margin-top: 0.2rem !important;  /* 留一点点呼吸空间，设为 0 可完全紧贴 */
 }
