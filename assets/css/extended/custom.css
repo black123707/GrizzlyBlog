@@ -387,11 +387,27 @@
   }
 }
 
-/* PaperMod 首页布局：社交图标与按钮之间的间距 */
+/* ============================================
+   强制缩小社交图标与按钮的间距
+   ============================================ */
+
+/* 社交图标容器：去掉下边距 */
+.social-icons {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* 按钮容器：去掉上边距 */
+.buttons {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* 如果它们被包在 .home-info 里，也处理一下 */
 .home-info .social-icons {
-  margin-bottom: 0;
+  margin-bottom: 0 !important;
 }
 
 .home-info .buttons {
-  margin-top: 0rem;  /* 控制按钮组顶部的空隙 */
+  margin-top: 0.3rem !important;  /* 留一点点呼吸空间，设为 0 可完全紧贴 */
 }
