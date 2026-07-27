@@ -319,3 +319,70 @@
     line-height: 1.6;
     color: var(--primary);
 }
+
+/* ============================================
+   首页按钮 Hover 上浮效果
+   ============================================ */
+
+/* 针对首页那两个按钮 */
+.buttons a.button,
+.home-buttons a.button,
+.entry-cover .buttons a.button {
+  /* 过渡动画：位移、阴影、背景色同时变化 */
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.35s ease,
+              background-color 0.3s ease,
+              border-color 0.3s ease;
+  will-change: transform;
+}
+
+/* Hover 状态：上浮 + 扩散阴影 */
+.buttons a.button:hover,
+.home-buttons a.button:hover,
+.entry-cover .buttons a.button:hover {
+  transform: translateY(-5px);
+  /* 浅色模式：柔和的灰色阴影 */
+  box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.15),
+              0 4px 8px -2px rgba(0, 0, 0, 0.08);
+}
+
+/* 点击时的反馈：稍微下沉，有按下去的感觉 */
+.buttons a.button:active,
+.home-buttons a.button:active,
+.entry-cover .buttons a.button:active {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================
+   深色模式适配
+   ============================================ */
+
+/* PaperMod 深色模式下，阴影用更深的黑色，避免发灰 */
+.dark .buttons a.button:hover,
+.dark .home-buttons a.button:hover,
+.dark .entry-cover .buttons a.button:hover,
+[data-theme="dark"] .buttons a.button:hover,
+[data-theme="dark"] .home-buttons a.button:hover,
+[data-theme="dark"] .entry-cover .buttons a.button:hover {
+  box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.5),
+              0 4px 8px -2px rgba(0, 0, 0, 0.3);
+}
+
+.dark .buttons a.button:active,
+.dark .home-buttons a.button:active,
+[data-theme="dark"] .buttons a.button:active,
+[data-theme="dark"] .home-buttons a.button:active {
+  box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.3);
+}
+
+/* ============================================
+   辅助功能：尊重用户的"减少动态效果"设置
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  .buttons a.button,
+  .home-buttons a.button {
+    transition: none !important;
+    transform: none !important;
+  }
+}
