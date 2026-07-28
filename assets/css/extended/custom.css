@@ -1,3 +1,8 @@
+/* 隐藏 PaperMod 自带的灰色返回顶部按钮，保留自定义的黑色按钮 */
+.top-link {
+  display: none !important;
+}
+
 /* ============================================
    PaperMod 归档页 + 文章卡片标签 + Memos 时间轴样式
    放置路径: assets/css/extended/custom.css
