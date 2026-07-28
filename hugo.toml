@@ -3,6 +3,12 @@ theme = 'PaperMod'
 languageCode = 'zh-CN'
 title = 'My Blog'
 
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+
 [params]
   ShowPostNavLinks = true
   ShowCodeCopyButtons = true 
