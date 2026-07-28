@@ -102,9 +102,3 @@ title = 'My Blog'
   disableHTML = false
   disableJS = false
   disableJSON = false
-
-outputs:
-  home:
-    - HTML
-    - RSS
-    - JSON  # 这行必须有！
